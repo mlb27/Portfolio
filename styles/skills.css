@@ -130,6 +130,7 @@
 }
 
 .skills__item {
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -157,6 +158,11 @@
 .skills__icon img {
   width: 60px;
   height: 60px;
+  transition: transform 150ms ease-in;
+}
+
+.skills__item:hover .skills__icon img {
+  transform: scale(1.0667);
 }
 
 .skills__item > span:last-child {
@@ -165,4 +171,99 @@
 
 .skills__item--growth {
   gap: 8px;
+}
+
+.skills__item--growth > span:last-of-type {
+  transition: color 150ms ease-in;
+}
+
+.skills__item--growth:hover {
+  z-index: 1;
+}
+
+.skills__item--growth:hover > span:last-of-type {
+  color: var(--color-primary);
+}
+
+.skills__growth-tooltip {
+  position: absolute;
+  top: -109px;
+  left: 0;
+  width: 188px;
+  height: 112px;
+  padding: 8px 10.5px;
+  border-radius: 16px;
+  background-color: var(--color-text);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity 300ms ease-out,
+    visibility 0s linear 300ms;
+}
+
+.skills__growth-tooltip::after {
+  position: absolute;
+  top: 112px;
+  left: 40px;
+  width: 26px;
+  height: 17px;
+  background-color: var(--color-text);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  content: "";
+}
+
+.skills__item--growth:hover .skills__growth-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.skills__growth-tooltip p {
+  width: 167px;
+  height: 38px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.skills__growth-technologies {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  height: 50px;
+  margin-top: 8px;
+}
+
+.skills__growth-technologies > span {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  height: 50px;
+}
+
+.skills__growth-technologies img {
+  width: 32px;
+  height: 32px;
+}
+
+.skills__growth-technologies span span {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills__icon img,
+  .skills__item--growth > span:last-of-type {
+    transition-duration: 150ms !important;
+  }
+
+  .skills__growth-tooltip {
+    transition-duration: 300ms, 0s !important;
+  }
 }
