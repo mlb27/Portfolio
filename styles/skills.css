@@ -1,0 +1,168 @@
+.skills {
+  height: 695px;
+  background-color: var(--color-background);
+  background-image: radial-gradient(
+    ellipse 347.807px 328.19px at 17.5px 364.5px,
+    rgb(8 70 59 / 30%) 0%,
+    var(--color-background) 100%
+  );
+}
+
+.skills__inner {
+  position: relative;
+  width: var(--content-width);
+  height: 100%;
+  margin-inline: auto;
+}
+
+.skills__introduction {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 520px;
+  height: 551px;
+}
+
+.skills__eyebrow {
+  width: 148px;
+  height: 28px;
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.skills__card {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 520px;
+  height: 503px;
+  padding: 31px;
+  border: 1px solid var(--color-primary);
+  border-radius: 30px;
+  background-color: rgb(61 207 182 / 10%);
+}
+
+.skills__card h2 {
+  width: 456px;
+  height: 64px;
+  margin: 0;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 64px;
+  line-height: 64px;
+  letter-spacing: -0.03em;
+}
+
+.skills__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 456px;
+  height: 247px;
+}
+
+.skills__description {
+  width: 456px;
+  height: 132px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: justify;
+}
+
+.skills__contact-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 331px;
+  height: 83px;
+}
+
+.skills__contact-copy p {
+  margin: 0;
+}
+
+.skills__question {
+  width: 331px;
+  height: 29px;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29px;
+  white-space: nowrap;
+}
+
+.skills__question-highlight {
+  color: var(--color-primary);
+}
+
+.skills__contact-copy > p:last-child {
+  width: 331px;
+  height: 38px;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.skills__contact-button {
+  width: 122px;
+  flex: 0 0 48px;
+}
+
+.skills__grid {
+  position: absolute;
+  top: 48px;
+  left: 616px;
+  display: grid;
+  grid-template-columns: repeat(4, 104px);
+  grid-auto-rows: 116px;
+  gap: 40px 72px;
+  width: 632px;
+  height: 428px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skills__item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  width: 104px;
+  height: 116px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.skills__item--compact {
+  letter-spacing: -0.03em;
+}
+
+.skills__icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  place-items: center;
+}
+
+.skills__icon img {
+  width: 60px;
+  height: 60px;
+}
+
+.skills__item > span:last-child {
+  min-height: 44px;
+}
+
+.skills__item--growth {
+  gap: 8px;
+}
