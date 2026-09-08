@@ -38,8 +38,9 @@
 
 .language-switch__button {
   display: grid;
+  flex: 1;
   height: 28px;
-  padding: 0 8px;
+  padding: 0;
   border: 0;
   background: transparent;
   color: var(--color-primary);
@@ -48,10 +49,6 @@
   font-size: 16px;
   line-height: 19px;
   place-items: center;
-}
-
-.language-switch__button:first-child {
-  padding-inline: 12px;
 }
 
 .language-switch__button.active {
@@ -96,11 +93,12 @@
 
 .logo__initials {
   display: block;
+  margin-right: 6px;
   color: var(--color-primary);
   font-family: var(--font-body);
   font-size: 48px;
   font-weight: 700;
-  letter-spacing: -0.18em;
+  letter-spacing: calc(-0.18em - 5px);
   line-height: 48px;
 }
 
