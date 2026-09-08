@@ -5,7 +5,7 @@
   z-index: 10;
   width: 100%;
   height: 98px;
-  background: linear-gradient(180deg, rgb(0 0 0 / 60%), transparent 84%);
+  background: linear-gradient(180deg, rgb(0 0 0 / 60%) 14%, transparent 84%);
 }
 
 .site-header__inner {
@@ -29,6 +29,7 @@
 }
 
 .language-switch {
+  width: 84px;
   height: 28px;
   border: 1px solid var(--color-primary);
   border-radius: 100px;
@@ -67,39 +68,21 @@
   list-style: none;
 }
 
+.main-navigation li:nth-child(1),
+.main-navigation li:nth-child(3) {
+  width: 92px;
+}
+
+.main-navigation li:nth-child(2) {
+  width: 69px;
+}
+
 .main-navigation a {
-  position: relative;
   font-family: var(--font-heading);
   font-size: 20px;
   line-height: 26px;
   text-decoration: none;
-}
-
-.main-navigation a::after {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  content: "";
-  opacity: 0;
-  transform: translate(-50%, -4px);
-  transition:
-    opacity 100ms ease,
-    transform 100ms ease;
-}
-
-.main-navigation a:hover,
-.main-navigation a:focus-visible {
-  color: var(--color-primary);
-}
-
-.main-navigation a:hover::after,
-.main-navigation a:focus-visible::after {
-  opacity: 1;
-  transform: translate(-50%, 0);
+  white-space: nowrap;
 }
 
 .logo {
