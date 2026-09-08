@@ -28,6 +28,24 @@ body {
   font-family: var(--font-body);
 }
 
+.skip-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 4px;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-weight: 700;
+  transform: translateY(-150%);
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 button,
 input,
 textarea {
@@ -46,6 +64,51 @@ a {
 img {
   display: block;
   max-width: 100%;
+}
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding-inline: 24px;
+  border: 1px solid var(--color-text);
+  border-radius: 100px;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  transition:
+    border-color 300ms ease,
+    color 300ms ease;
+}
+
+.button::after {
+  position: absolute;
+  right: 16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  content: "";
+  opacity: 0;
+  transform: translateX(16px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.button:hover::after,
+.button:focus-visible::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @media (prefers-reduced-motion: reduce) {

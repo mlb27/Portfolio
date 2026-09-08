@@ -11,12 +11,95 @@
         href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Karla:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/hero.css">
     <title>Moritz Böhm - Portfolio</title>
     <script src="./script.js" defer></script>
 </head>
 
 <body>
-    <main id="main-content"></main>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <div class="site-header__controls">
+                <div class="language-switch" aria-label="Select language">
+                    <button class="language-switch__button active" type="button" data-language="en"
+                        aria-pressed="true">EN</button>
+                    <button class="language-switch__button" type="button" data-language="de"
+                        aria-pressed="false">DE</button>
+                </div>
+
+                <nav aria-label="Main navigation">
+                    <ul class="main-navigation">
+                        <li><a href="#about" data-en="About me" data-de="Über mich">About me</a></li>
+                        <li><a href="#skills" data-en="Skills" data-de="Fähigkeiten">Skills</a></li>
+                        <li><a href="#projects" data-en="Projects" data-de="Projekte">Projects</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <a class="logo" href="#hero" aria-label="Moritz Böhm - back to top">
+                <span class="logo__initials" aria-hidden="true">MB</span>
+                <span class="logo__name" aria-hidden="true">Moritz<br>Böhm</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="hero__content">
+                <p class="hero__profession" data-en="Frontend Developer" data-de="Frontend-Entwickler">
+                    Frontend Developer
+                </p>
+                <h1 id="hero-title">Moritz Böhm</h1>
+                <div class="hero__actions">
+                    <a class="button" href="#projects" data-en="Check my work" data-de="Meine Projekte">
+                        Check my work
+                    </a>
+                    <a class="button" href="#contact" data-en="Contact me" data-de="Kontakt">
+                        Contact me
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero__scroll-indicator" aria-hidden="true">
+                <span class="hero__mouse"><span></span></span>
+                <span class="hero__line hero__line--primary"></span>
+            </div>
+
+            <aside class="hero__contact" aria-label="Contact links">
+                <a class="hero__email" href="mailto:ml-boehm@gmx.de">ml-boehm@gmx.de</a>
+                <div class="hero__socials">
+                    <a href="https://github.com/mlb27" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub profile">
+                        <img src="./assets/icons/github.svg" alt="">
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="./assets/icons/linkedin.svg" alt="">
+                    </a>
+                </div>
+                <span class="hero__line"></span>
+            </aside>
+
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee__track">
+                    <div class="marquee__group">
+                        <span>Available for remote work</span>
+                        <span>Frontend Developer</span>
+                        <span>Based in Lower Bavaria</span>
+                        <span>Open to work</span>
+                    </div>
+                    <div class="marquee__group">
+                        <span>Available for remote work</span>
+                        <span>Frontend Developer</span>
+                        <span>Based in Lower Bavaria</span>
+                        <span>Open to work</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
