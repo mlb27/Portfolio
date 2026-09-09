@@ -50,7 +50,7 @@
   padding: 31px;
   border: 1px solid var(--color-primary);
   border-radius: 30px;
-  background-color: rgb(61 207 182 / 10%);
+  background-color: rgb(var(--color-primary-rgb) / 10%);
 }
 
 .about__card h2 {

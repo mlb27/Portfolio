@@ -3,7 +3,7 @@
   background-color: var(--color-background);
   background-image: radial-gradient(
     ellipse 347.807px 328.19px at 17.5px 364.5px,
-    rgb(8 70 59 / 30%) 0%,
+    rgb(var(--color-primary-rgb) / 30%) 0%,
     var(--color-background) 100%
   );
 }
@@ -45,7 +45,7 @@
   padding: 31px;
   border: 1px solid var(--color-primary);
   border-radius: 30px;
-  background-color: rgb(61 207 182 / 10%);
+  background-color: rgb(var(--color-primary-rgb) / 10%);
 }
 
 .skills__card h2 {

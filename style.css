@@ -1,7 +1,7 @@
 :root {
   --color-background: #1c1c1c;
-  --color-surface: #08463b;
-  --color-primary: #3dcfb6;
+  --color-primary-rgb: 128 184 255;
+  --color-primary: #80b8ff;
   --color-text: #ffffff;
   --color-text-muted: #d9d9d9;
   --font-heading: "Fira Code", monospace;

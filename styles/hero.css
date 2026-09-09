@@ -2,7 +2,13 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(42.02deg, #1c1c1c 36.17%, #08463b 93.89%);
+  background:
+    linear-gradient(
+      42.02deg,
+      rgb(28 28 28 / 30%) 23%,
+      rgb(var(--color-primary-rgb) / 30%) 100%
+    ),
+    var(--color-background);
 }
 
 .hero__content {
