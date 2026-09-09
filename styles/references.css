@@ -1,0 +1,243 @@
+.references {
+  position: relative;
+  height: 452px;
+  overflow: hidden;
+  background-color: var(--color-background);
+}
+
+.references__heading {
+  position: relative;
+  z-index: 4;
+  width: max-content;
+  height: 42px;
+  margin: 0 auto;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 42px;
+}
+
+.references__viewport {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  height: 274px;
+  overflow: hidden;
+}
+
+.references__track {
+  --track-offset: -2088px;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 326px);
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: max-content;
+  height: 274px;
+  transform: translateX(var(--track-offset));
+  transition: transform 300ms ease-in;
+  will-change: transform;
+}
+
+.references__track.references__track--no-transition {
+  transition: none;
+}
+
+.references__track--no-transition .references__card {
+  transition: none !important;
+}
+
+.references__card {
+  display: flex;
+  flex: 0 0 632px;
+  flex-direction: column;
+  gap: 12px;
+  width: 632px;
+  height: 248px;
+  padding: 48px 40px;
+  border: 1px solid var(--color-primary);
+  border-radius: 32px;
+  overflow: hidden;
+  background-color: rgb(var(--color-primary-rgb) / 10%);
+  transition:
+    height 300ms ease-in,
+    background-color 300ms ease-in;
+}
+
+.references__card:not(.is-active) {
+  cursor: pointer;
+}
+
+.references__card.is-active {
+  height: 274px;
+  background-color: rgb(var(--color-primary-rgb) / 30%);
+}
+
+.references__text {
+  flex: 0 0 144px;
+  width: 552px;
+  height: 144px;
+  margin: 0;
+  overflow: hidden;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.references__author-row {
+  display: flex;
+  flex: 0 0 22px;
+  align-items: center;
+  gap: 16px;
+  width: 552px;
+  height: 22px;
+}
+
+.references__author-line {
+  flex: 1;
+  border-top: 1px solid var(--color-text);
+}
+
+.references__author {
+  flex: none;
+  font-size: 18px;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.references__fade {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    var(--color-background) 0%,
+    rgb(28 28 28 / 0%) 10%,
+    rgb(28 28 28 / 0%) 90%,
+    var(--color-background) 100%
+  );
+  pointer-events: none;
+}
+
+.references__quote {
+  position: absolute;
+  top: 82px;
+  left: calc(50% - 371px);
+  z-index: 4;
+  width: 89.08px;
+  height: 64px;
+}
+
+.references__navigation {
+  position: absolute;
+  top: 412px;
+  left: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 184px;
+  height: 40px;
+  transform: translateX(-50%);
+}
+
+.references__arrow {
+  position: relative;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.references__arrow::before {
+  position: absolute;
+  background-color: currentcolor;
+  content: "";
+  transition:
+    top 100ms ease-in,
+    left 100ms ease-in,
+    width 100ms ease-in,
+    height 100ms ease-in,
+    background-color 100ms ease-in;
+}
+
+.references__arrow--previous::before {
+  top: 10.94px;
+  left: 11.1px;
+  width: 18.23px;
+  height: 18.14px;
+  -webkit-mask: url("../assets/icons/reference-arrow-back.svg") center / 100% 100% no-repeat;
+  -webkit-mask: url("../assets/icons/reference-arrow-back.svg") center / 100% 100% no-repeat;
+  mask: url("../assets/icons/reference-arrow-back.svg") center / 100% 100% no-repeat;
+}
+
+.references__arrow--next::before {
+  top: 10.92px;
+  left: 10.67px;
+  width: 18.23px;
+  height: 18.14px;
+  -webkit-mask: url("../assets/icons/reference-arrow-forward.svg") center / 100% 100% no-repeat;
+  -webkit-mask: url("../assets/icons/reference-arrow-forward.svg") center / 100% 100% no-repeat;
+  mask: url("../assets/icons/reference-arrow-forward.svg") center / 100% 100% no-repeat;
+}
+
+.references__arrow--previous:hover::before,
+.references__arrow--previous:focus-visible::before {
+  top: 10.42px;
+  left: 6.5px;
+  width: 19.5px;
+  height: 19.18px;
+  background-color: var(--color-primary);
+}
+
+.references__arrow--next:hover::before,
+.references__arrow--next:focus-visible::before {
+  top: 10.4px;
+  left: 14px;
+  width: 19.5px;
+  height: 19.18px;
+  background-color: var(--color-primary);
+}
+
+.references__dot {
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--color-text);
+}
+
+.references__dot.is-active {
+  background-color: var(--color-primary);
+}
+
+.references__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .references__track,
+  .references__card {
+    transition-duration: 300ms !important;
+  }
+
+  .references__arrow::before {
+    transition-duration: 100ms !important;
+  }
+}

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./styles/about.css">
     <link rel="stylesheet" href="./styles/skills.css">
     <link rel="stylesheet" href="./styles/projects.css">
+    <link rel="stylesheet" href="./styles/references.css">
     <title>Moritz Böhm - Portfolio</title>
     <script src="./script.js" defer></script>
 </head>
@@ -328,7 +329,59 @@
                 </ul>
             </div>
         </section>
-    </main>
+        <section class="references" id="references" aria-labelledby="references-title">
+            <h2 class="references__heading" id="references-title">What my colleagues say about me</h2>
+
+            <div class="references__viewport">
+                <div class="references__track">
+                    <article class="references__card" data-reference="0">
+                        <p class="references__text">
+                            Our project benefited enormously from Lukas efficient way of working.
+                        </p>
+                        <footer class="references__author-row">
+                            <span class="references__author-line" aria-hidden="true"></span>
+                            <span class="references__author">T.Schulz - Frontend Developer</span>
+                        </footer>
+                    </article>
+                    <article class="references__card is-active" data-reference="1">
+                        <p class="references__text">
+                            Lukas has proven to be a reliable group partner. His technical skills and proactive approach
+                            were crucial to the success of our project.
+                        </p>
+                        <footer class="references__author-row">
+                            <span class="references__author-line" aria-hidden="true"></span>
+                            <span class="references__author">H.Janisch - Team Partner</span>
+                        </footer>
+                    </article>
+                    <article class="references__card" data-reference="2">
+                        <p class="references__text">
+                            I had the good fortune of working with Simon in a group project at the Developer Akademie
+                            that involved a lot of effort. He always stayed calm, cool, and focused, and made sure our
+                            team was set up for success. He's super knowledgeable, easy to work with, and I'd happily
+                            work with him again given the chance.
+                        </p>
+                        <footer class="references__author-row">
+                            <span class="references__author-line" aria-hidden="true"></span>
+                            <span class="references__author">A. Fischer - Team Partner</span>
+                        </footer>
+                    </article>
+                </div>
+                <div class="references__fade" aria-hidden="true"></div>
+            </div>
+
+            <img class="references__quote" src="./assets/icons/reference-quote.svg" alt="">
+
+            <div class="references__navigation">
+                <button class="references__arrow references__arrow--previous" type="button"
+                    aria-label="Show previous reference"></button>
+                <span class="references__dot is-active" aria-hidden="true"></span>
+                <span class="references__dot" aria-hidden="true"></span>
+                <span class="references__dot" aria-hidden="true"></span>
+                <button class="references__arrow references__arrow--next" type="button"
+                    aria-label="Show next reference"></button>
+            </div>
+            <p class="references__status" aria-live="polite">Reference 1 of 3</p>
+        </section>    </main>
 </body>
 
 </html>
