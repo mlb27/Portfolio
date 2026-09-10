@@ -140,6 +140,7 @@ if (contactForm) {
   contactForm.noValidate = true;
   const fields = [...contactForm.querySelectorAll(".contact__field input, textarea")];
   const consent = document.querySelector("#contact-consent");
+  const consentError = document.querySelector("#contact-consent-error");
   const submitButton = contactForm.querySelector(".contact__submit");
   const status = contactForm.querySelector(".contact__status");
   const privacyButton = contactForm.querySelector(".contact__privacy-button");
@@ -152,8 +153,27 @@ if (contactForm) {
   function showFieldError(field) {
     const isValid = isFieldValid(field);
     const error = document.getElementById(field.getAttribute("aria-describedby"));
+    field.closest(".contact__field").classList.toggle("contact__field--invalid", !isValid);
     field.setAttribute("aria-invalid", String(!isValid));
     error.hidden = isValid;
+  }
+
+  function hideFieldError(field) {
+    const error = document.getElementById(field.getAttribute("aria-describedby"));
+    field.closest(".contact__field").classList.remove("contact__field--invalid");
+    field.removeAttribute("aria-invalid");
+    error.hidden = true;
+  }
+
+  function showConsentError() {
+    const isValid = consent.checked;
+    consent.setAttribute("aria-invalid", String(!isValid));
+    consentError.hidden = isValid;
+  }
+
+  function hideConsentError() {
+    consent.removeAttribute("aria-invalid");
+    consentError.hidden = true;
   }
 
   function updateContactForm() {
@@ -163,15 +183,13 @@ if (contactForm) {
 
   fields.forEach((field) => {
     field.addEventListener("blur", () => showFieldError(field));
-    field.addEventListener("input", () => {
-      if (field.hasAttribute("aria-invalid")) {
-        showFieldError(field);
-      }
-      updateContactForm();
-    });
+    field.addEventListener("focus", () => hideFieldError(field));
+    field.addEventListener("input", updateContactForm);
   });
 
-  contactForm.addEventListener("change", updateContactForm);
+  consent.addEventListener("blur", showConsentError);
+  consent.addEventListener("focus", hideConsentError);
+  consent.addEventListener("change", updateContactForm);
   privacyButton.addEventListener("click", () => {
     privacyNote.hidden = !privacyNote.hidden;
     privacyButton.setAttribute("aria-expanded", String(!privacyNote.hidden));
@@ -180,6 +198,7 @@ if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
     fields.forEach(showFieldError);
+    showConsentError();
     updateContactForm();
     if (submitButton.disabled) {
       const invalidField = fields.find((field) => !isFieldValid(field));
