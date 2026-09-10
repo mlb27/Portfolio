@@ -67,6 +67,7 @@ img {
 }
 
 .button {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,6 +80,55 @@ img {
   line-height: 22px;
   text-decoration: none;
   white-space: nowrap;
+  transition: border-color 100ms ease-out, color 100ms ease-out;
+}
+
+.button__text {
+  color: inherit;
+  transition: transform 100ms ease-out;
+}
+
+.button__text--clone {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(0, -50%);
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transition-duration: 1s;
+}
+
+.button:hover:not(:disabled) .button__text:not(.button__text--clone) {
+  animation: button-text-exit 1s ease-out forwards;
+}
+
+.button:hover:not(:disabled) .button__text--clone {
+  animation: button-text-loop 3s ease-out 1s infinite;
+}
+
+@keyframes button-text-exit {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes button-text-loop {
+  from {
+    left: 100%;
+    transform: translate(0, -50%);
+  }
+
+  to {
+    left: 0;
+    transform: translate(-100%, -50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -93,5 +143,21 @@ img {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .button {
+    transition-duration: 100ms !important;
+  }
+
+  .button:hover:not(:disabled) {
+    transition-duration: 1s !important;
+  }
+
+  .button:hover:not(:disabled) .button__text:not(.button__text--clone) {
+    animation: button-text-exit 1s ease-out forwards !important;
+  }
+
+  .button:hover:not(:disabled) .button__text--clone {
+    animation: button-text-loop 3s ease-out 1s infinite !important;
   }
 }

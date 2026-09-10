@@ -212,6 +212,29 @@
 .contact__submit:hover:not(:disabled) {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  transition-duration: 800ms;
+}
+
+.contact__submit:hover:not(:disabled) .button__text:not(.button__text--clone) {
+  animation-duration: 800ms;
+}
+
+.contact__submit:hover:not(:disabled) .button__text--clone {
+  animation-delay: 800ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact__submit:hover:not(:disabled) {
+    transition-duration: 800ms !important;
+  }
+
+  .contact__submit:hover:not(:disabled) .button__text:not(.button__text--clone) {
+    animation-duration: 800ms !important;
+  }
+
+  .contact__submit:hover:not(:disabled) .button__text--clone {
+    animation-delay: 800ms !important;
+  }
 }
 
 .contact__submit:disabled {
