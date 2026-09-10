@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./styles/skills.css">
     <link rel="stylesheet" href="./styles/projects.css">
     <link rel="stylesheet" href="./styles/references.css">
+    <link rel="stylesheet" href="./styles/contact.css">
     <title>Moritz Böhm - Portfolio</title>
     <script src="./script.js" defer></script>
 </head>
@@ -381,7 +382,90 @@
                     aria-label="Show next reference"></button>
             </div>
             <p class="references__status" aria-live="polite">Reference 1 of 3</p>
-        </section>    </main>
+        </section>
+
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+            <div class="contact__inner">
+                <div class="contact__content">
+                    <p class="contact__subtext" data-en="Contact me" data-de="Kontakt">Contact me</p>
+                    <h2 class="contact__heading" id="contact-title">
+                        <span data-en="Let's work" data-de="Lass uns">Let's work</span><br>
+                        <span data-en="together" data-de="zusammenarbeiten">together</span>
+                    </h2>
+                    <h3 class="contact__ask" data-en="Got a problem to solve?"
+                        data-de="Suchst du eine Lösung?">Got a problem to solve?</h3>
+                    <p class="contact__paragraph"
+                        data-en="I am always looking for opportunities to improve, learn, and grow. I would love to contribute my frontend skills to your team and turn ideas into useful applications."
+                        data-de="Ich suche nach Möglichkeiten, dazuzulernen und mich weiterzuentwickeln. Gerne bringe ich meine Frontend-Kenntnisse in dein Team ein und setze Ideen in nützliche Anwendungen um.">
+                        I am always looking for opportunities to improve, learn, and grow. I would love to contribute
+                        my frontend skills to your team and turn ideas into useful applications.
+                    </p>
+                    <p class="contact__cta">
+                        <span data-en="Need a Frontend Developer?" data-de="Du suchst einen Frontend-Entwickler?">Need a Frontend Developer?</span>
+                        <a href="mailto:ml-boehm@gmx.de" data-en="Let's talk!" data-de="Lass uns reden!">Let's talk!</a>
+                    </p>
+                </div>
+
+                <form class="contact__form" aria-label="Contact" aria-describedby="contact-demo-note">
+                    <div class="contact__fields">
+                        <div class="contact__field">
+                            <label for="contact-name" data-en="What's your name?" data-de="Wie heißt du?">What's your name?</label>
+                            <input id="contact-name" name="name" type="text" autocomplete="name" required maxlength="100"
+                                placeholder="Your name goes here" data-placeholder-en="Your name goes here"
+                                data-placeholder-de="Dein Name" aria-describedby="contact-name-error">
+                            <p class="contact__error" id="contact-name-error" hidden
+                                data-en="Please enter your name." data-de="Bitte gib deinen Namen ein.">Please enter your name.</p>
+                        </div>
+                        <div class="contact__field">
+                            <label for="contact-email" data-en="What's your email?" data-de="Wie lautet deine E-Mail?">What's your email?</label>
+                            <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254"
+                                placeholder="youremail@email.com" data-placeholder-en="youremail@email.com"
+                                data-placeholder-de="deinname@email.de" aria-describedby="contact-email-error">
+                            <p class="contact__error" id="contact-email-error" hidden
+                                data-en="Please enter a valid email address." data-de="Bitte gib eine gültige E-Mail-Adresse ein.">Please enter a valid email address.</p>
+                        </div>
+                        <div class="contact__field">
+                            <label for="contact-message" data-en="How can I help you?" data-de="Wie kann ich dir helfen?">How can I help you?</label>
+                            <textarea id="contact-message" name="message" rows="1" required maxlength="5000"
+                                placeholder="Hello Moritz, I am interested in…" data-placeholder-en="Hello Moritz, I am interested in…"
+                                data-placeholder-de="Hallo Moritz, ich interessiere mich für…" aria-describedby="contact-message-error"></textarea>
+                            <p class="contact__error" id="contact-message-error" hidden
+                                data-en="Please enter a message." data-de="Bitte gib eine Nachricht ein.">Please enter a message.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact__consent">
+                        <input id="contact-consent" name="consent" type="checkbox" required>
+                        <div>
+                            <label for="contact-consent" data-en="I've read the" data-de="Ich habe die">I've read the</label>
+                            <button class="contact__privacy-button" type="button" aria-expanded="false"
+                                aria-controls="contact-privacy" data-en="privacy policy" data-de="Datenschutzhinweise">privacy policy</button>
+                            <label for="contact-consent" data-en="and agree to the processing of my data as outlined."
+                                data-de="gelesen und stimme der beschriebenen Verarbeitung meiner Daten zu.">and agree to the processing of my data as outlined.</label>
+                        </div>
+                    </div>
+                    <p class="contact__note" id="contact-privacy" hidden
+                        data-en="Placeholder for the privacy policy. This demo does not send or save your entries."
+                        data-de="Platzhalter für die Datenschutzerklärung. Diese Demo versendet und speichert deine Eingaben nicht.">
+                        Placeholder for the privacy policy. This demo does not send or save your entries.
+                    </p>
+                    <div class="contact__actions">
+                        <button class="button contact__submit" type="submit" disabled data-en="Say Hello :)"
+                            data-de="Sag Hallo :D">Say Hello :D</button>
+                        <p class="contact__note" id="contact-demo-note" data-en="Demo form — no message will be sent."
+                            data-de="Demoformular – es wird keine Nachricht versendet.">Demo form — no message will be sent.</p>
+                        <p class="contact__status" role="status" hidden
+                            data-en="Thanks! The demo validation worked. Your message has not been sent."
+                            data-de="Danke! Die Prüfung der Demo hat funktioniert. Deine Nachricht wurde nicht versendet.">
+                            Thanks! The demo validation worked. Your message has not been sent.
+                        </p>
+                    </div>
+                    <noscript><p class="contact__note">This demo requires JavaScript. Contact: <a href="mailto:ml-boehm@gmx.de">ml-boehm@gmx.de</a></p></noscript>
+                </form>
+            </div>
+        </section>
+    </main>
+
 </body>
 
 </html>

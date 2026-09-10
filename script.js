@@ -8,6 +8,15 @@ function setLanguage(language) {
     element.textContent = element.dataset[language];
   });
 
+  document.querySelectorAll("[data-placeholder-en][data-placeholder-de]").forEach((element) => {
+    element.placeholder = element.getAttribute(`data-placeholder-${language}`);
+  });
+
+  const contactForm = document.querySelector(".contact__form");
+  if (contactForm) {
+    contactForm.setAttribute("aria-label", language === "de" ? "Kontakt" : "Contact");
+  }
+
   languageButtons.forEach((button) => {
     const isActive = button.dataset.language === language;
 
@@ -122,4 +131,63 @@ if (referencesTrack) {
   requestAnimationFrame(() => {
     referencesTrack.classList.remove("references__track--no-transition");
   });
+}
+
+const contactForm = document.querySelector(".contact__form");
+
+if (contactForm) {
+  // This is a local demo: never send, store, or clear the visitor's entries.
+  contactForm.noValidate = true;
+  const fields = [...contactForm.querySelectorAll(".contact__field input, textarea")];
+  const consent = document.querySelector("#contact-consent");
+  const submitButton = contactForm.querySelector(".contact__submit");
+  const status = contactForm.querySelector(".contact__status");
+  const privacyButton = contactForm.querySelector(".contact__privacy-button");
+  const privacyNote = document.querySelector("#contact-privacy");
+
+  function isFieldValid(field) {
+    return field.value.trim().length > 0 && field.validity.valid;
+  }
+
+  function showFieldError(field) {
+    const isValid = isFieldValid(field);
+    const error = document.getElementById(field.getAttribute("aria-describedby"));
+    field.setAttribute("aria-invalid", String(!isValid));
+    error.hidden = isValid;
+  }
+
+  function updateContactForm() {
+    submitButton.disabled = !consent.checked || !fields.every(isFieldValid);
+    status.hidden = true;
+  }
+
+  fields.forEach((field) => {
+    field.addEventListener("blur", () => showFieldError(field));
+    field.addEventListener("input", () => {
+      if (field.hasAttribute("aria-invalid")) {
+        showFieldError(field);
+      }
+      updateContactForm();
+    });
+  });
+
+  contactForm.addEventListener("change", updateContactForm);
+  privacyButton.addEventListener("click", () => {
+    privacyNote.hidden = !privacyNote.hidden;
+    privacyButton.setAttribute("aria-expanded", String(!privacyNote.hidden));
+  });
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    fields.forEach(showFieldError);
+    updateContactForm();
+    if (submitButton.disabled) {
+      const invalidField = fields.find((field) => !isFieldValid(field));
+      (invalidField || consent).focus();
+      return;
+    }
+    status.hidden = false;
+  });
+
+  updateContactForm();
 }
