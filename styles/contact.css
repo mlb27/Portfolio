@@ -111,7 +111,7 @@
 
 .contact__field--invalid input,
 .contact__field--invalid textarea {
-  visibility: hidden;
+  opacity: 0 !important;
 }
 
 .contact__field input::placeholder,
@@ -270,6 +270,7 @@
   top: 76px;
   left: 32px;
   line-height: 22px;
+  pointer-events: none;
 }
 
 .contact__consent-error {
