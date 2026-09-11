@@ -17,11 +17,13 @@
     <link rel="stylesheet" href="./styles/about.css">
     <link rel="stylesheet" href="./styles/skills.css">
     <link rel="stylesheet" href="./styles/projects.css">
+    <link rel="stylesheet" href="./styles/project-dialog.css">
     <link rel="stylesheet" href="./styles/references.css">
     <link rel="stylesheet" href="./styles/contact.css">
     <link rel="stylesheet" href="./styles/footer.css">
     <title>Moritz Böhm - Portfolio</title>
     <script src="./script.js" defer></script>
+    <script src="./scripts/project-dialog.js" defer></script>
 </head>
 
 <body>
@@ -281,59 +283,68 @@
 
                 <ul class="projects__list">
                     <li class="projects__item projects__item--join">
-                        <div class="projects__name">
-                            <h3>Join</h3>
-                            <img class="projects__arrow" src="./assets/icons/arrow-outward.svg" alt="">
-                        </div>
-                        <div class="projects__technologies" aria-label="Angular, TypeScript, HTML, CSS, Firebase">
-                            <span>Angular</span>
-                            <span class="projects__separator" aria-hidden="true">|</span>
-                            <span>TypeScript</span>
-                            <span class="projects__separator" aria-hidden="true">|</span>
-                            <span>HTML</span>
-                            <span class="projects__separator" aria-hidden="true">|</span>
-                            <span>CSS</span>
-                            <span class="projects__separator" aria-hidden="true">|</span>
-                            <span>Firebase</span>
-                        </div>
-                        <div class="projects__preview" aria-hidden="true">
-                            <img class="projects__preview-lines" src="./assets/decorations/project-preview-lines.svg" alt="">
-                            <img class="projects__preview-image" src="./assets/images/projects/join.png" alt="">
-                        </div>
+                        <button class="projects__trigger" type="button" data-project="join" aria-haspopup="dialog"
+                            aria-controls="project-dialog">
+                            <div class="projects__name">
+                                <h3>Join</h3>
+                                <img class="projects__arrow" src="./assets/icons/arrow-outward.svg" alt="">
+                            </div>
+                            <div class="projects__technologies" aria-label="Angular, TypeScript, HTML, CSS, Firebase">
+                                <span>Angular</span>
+                                <span class="projects__separator" aria-hidden="true">|</span>
+                                <span>TypeScript</span>
+                                <span class="projects__separator" aria-hidden="true">|</span>
+                                <span>HTML</span>
+                                <span class="projects__separator" aria-hidden="true">|</span>
+                                <span>CSS</span>
+                                <span class="projects__separator" aria-hidden="true">|</span>
+                                <span>Firebase</span>
+                            </div>
+                            <span class="projects__preview" aria-hidden="true">
+                                <img class="projects__preview-lines" src="./assets/decorations/project-preview-lines.svg" alt="">
+                                <img class="projects__preview-image" src="./assets/images/projects/join.png" alt="">
+                            </span>
+                        </button>
                     </li>
                     <li class="projects__item projects__item--el-pollo-loco">
-                        <div class="projects__name">
-                            <h3>El Pollo Loco</h3>
-                            <img class="projects__arrow" src="./assets/icons/arrow-outward.svg" alt="">
-                        </div>
-                        <div class="projects__technologies" aria-label="HTML, CSS, JavaScript">
-                            <span>HTML</span>
-                            <span class="projects__separator" aria-hidden="true">|</span>
-                            <span>CSS</span>
-                            <span class="projects__separator" aria-hidden="true">|</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="projects__preview" aria-hidden="true">
-                            <img class="projects__preview-lines" src="./assets/decorations/project-preview-lines.svg" alt="">
-                            <img class="projects__preview-image" src="./assets/images/projects/el-pollo-loco.png" alt="">
-                        </div>
+                        <button class="projects__trigger" type="button" data-project="el-pollo-loco"
+                            aria-haspopup="dialog" aria-controls="project-dialog">
+                            <div class="projects__name">
+                                <h3>El Pollo Loco</h3>
+                                <img class="projects__arrow" src="./assets/icons/arrow-outward.svg" alt="">
+                            </div>
+                            <div class="projects__technologies" aria-label="HTML, CSS, JavaScript">
+                                <span>HTML</span>
+                                <span class="projects__separator" aria-hidden="true">|</span>
+                                <span>CSS</span>
+                                <span class="projects__separator" aria-hidden="true">|</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <span class="projects__preview" aria-hidden="true">
+                                <img class="projects__preview-lines" src="./assets/decorations/project-preview-lines.svg" alt="">
+                                <img class="projects__preview-image" src="./assets/images/projects/el-pollo-loco.png" alt="">
+                            </span>
+                        </button>
                     </li>
                     <li class="projects__item projects__item--da-bubble">
-                        <div class="projects__name">
-                            <h3>DA Bubble</h3>
-                            <img class="projects__arrow" src="./assets/icons/arrow-outward.svg" alt="">
-                        </div>
-                        <div class="projects__technologies" aria-label="Angular, Firebase, TypeScript">
-                            <span>Angular</span>
-                            <span class="projects__separator" aria-hidden="true">|</span>
-                            <span>Firebase</span>
-                            <span class="projects__separator" aria-hidden="true">|</span>
-                            <span>TypeScript</span>
-                        </div>
-                        <div class="projects__preview" aria-hidden="true">
-                            <img class="projects__preview-lines" src="./assets/decorations/project-preview-lines.svg" alt="">
-                            <img class="projects__preview-image" src="./assets/images/projects/da-bubble.png" alt="">
-                        </div>
+                        <button class="projects__trigger" type="button" data-project="da-bubble" aria-haspopup="dialog"
+                            aria-controls="project-dialog">
+                            <div class="projects__name">
+                                <h3>DA Bubble</h3>
+                                <img class="projects__arrow" src="./assets/icons/arrow-outward.svg" alt="">
+                            </div>
+                            <div class="projects__technologies" aria-label="Angular, Firebase, TypeScript">
+                                <span>Angular</span>
+                                <span class="projects__separator" aria-hidden="true">|</span>
+                                <span>Firebase</span>
+                                <span class="projects__separator" aria-hidden="true">|</span>
+                                <span>TypeScript</span>
+                            </div>
+                            <span class="projects__preview" aria-hidden="true">
+                                <img class="projects__preview-lines" src="./assets/decorations/project-preview-lines.svg" alt="">
+                                <img class="projects__preview-image" src="./assets/images/projects/da-bubble.png" alt="">
+                            </span>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -483,6 +494,44 @@
         </section>
     </main>
 
+    <dialog class="project-dialog" id="project-dialog" tabindex="-1" aria-labelledby="project-dialog-title"
+        aria-describedby="project-dialog-description">
+        <div class="project-dialog__content">
+            <header class="project-dialog__heading">
+                <span class="project-dialog__number" aria-hidden="true">01</span>
+                <h2 id="project-dialog-title">Join</h2>
+            </header>
+
+            <div class="project-dialog__details">
+                <div class="project-dialog__description-group">
+                    <h3 data-en="What is this project about?" data-de="Worum geht es in diesem Projekt?">
+                        What is this project about?
+                    </h3>
+                    <p id="project-dialog-description"></p>
+                </div>
+                <ul class="project-dialog__technologies" aria-label="Technologies"></ul>
+            </div>
+
+            <div class="project-dialog__links">
+                <a class="project-dialog__link project-dialog__github" href="#">
+                    <span>GitHub</span>
+                    <span class="project-dialog__external-icon" aria-hidden="true"></span>
+                </a>
+                <a class="project-dialog__link project-dialog__live" href="#">
+                    <span>Live Test</span>
+                    <span class="project-dialog__external-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+
+        <img class="project-dialog__image" src="./assets/images/projects/join-dialog.png" alt="Join project preview">
+
+        <button class="project-dialog__close" type="button" aria-label="Close project details"></button>
+        <button class="project-dialog__next" type="button">
+            <span data-en="Next project" data-de="Nächstes Projekt">Next project</span>
+            <span class="project-dialog__next-icon" aria-hidden="true"></span>
+        </button>
+    </dialog>
     <footer class="site-footer" id="site-footer">
         <div class="site-footer__inner">
             <div class="site-footer__identity">
