@@ -25,6 +25,7 @@
     <title>Moritz Böhm - Portfolio</title>
     <script src="./script.js" defer></script>
     <script src="./scripts/mobile-menu.js" defer></script>
+    <script src="./scripts/skills.js" defer></script>
     <script src="./scripts/project-dialog.js" defer></script>
 </head>
 
@@ -272,9 +273,14 @@
                         <span>Scrum</span>
                     </li>
                     <li class="skills__item skills__item--growth">
-                        <span class="skills__icon"><img src="./assets/icons/skill-growth-mindset.svg" alt=""></span>
-                        <span data-en="Growth mindset" data-de="Growth Mindset">Growth<br>mindset</span>
-                        <div class="skills__growth-tooltip" aria-hidden="true">
+                        <button class="skills__growth-trigger" type="button" aria-expanded="false"
+                            aria-controls="skills-growth-tooltip">
+                            <span class="skills__icon"><img src="./assets/icons/skill-growth-mindset.svg" alt=""></span>
+                            <span class="skills__growth-label" data-en="Growth mindset"
+                                data-de="Growth Mindset">Growth<br>mindset</span>
+                        </button>
+                        <div class="skills__growth-tooltip" id="skills-growth-tooltip" role="tooltip"
+                            aria-hidden="true">
                             <p data-en="I have a special interest in learning"
                                 data-de="Besonders gerne lerne ich dazu">
                                 I have a special interest in learning

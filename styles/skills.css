@@ -170,18 +170,38 @@
 }
 
 .skills__item--growth {
-  gap: 8px;
+  gap: 0;
 }
 
-.skills__item--growth > span:last-of-type {
+.skills__growth-trigger {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  width: 104px;
+  height: 116px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+.skills__growth-label {
+  min-height: 44px;
   transition: color 150ms ease-in;
 }
 
-.skills__item--growth:hover {
+.skills__item--growth:hover,
+.skills__item--growth:focus-within,
+.skills__item--growth.is-open {
   z-index: 1;
 }
 
-.skills__item--growth:hover > span:last-of-type {
+.skills__item--growth:hover .skills__growth-label,
+.skills__item--growth:focus-within .skills__growth-label,
+.skills__item--growth.is-open .skills__growth-label {
   color: var(--color-primary);
 }
 
@@ -215,7 +235,9 @@
   content: "";
 }
 
-.skills__item--growth:hover .skills__growth-tooltip {
+.skills__item--growth:hover .skills__growth-tooltip,
+.skills__item--growth:focus-within .skills__growth-tooltip,
+.skills__item--growth.is-open .skills__growth-tooltip {
   opacity: 1;
   visibility: visible;
   transition-delay: 0s;
@@ -259,11 +281,178 @@
 
 @media (prefers-reduced-motion: reduce) {
   .skills__icon img,
-  .skills__item--growth > span:last-of-type {
+  .skills__growth-label {
     transition-duration: 150ms !important;
   }
 
   .skills__growth-tooltip {
     transition-duration: 300ms, 0s !important;
+  }
+}
+
+@keyframes mobile-skill-state {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.0667);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills {
+    height: auto;
+    margin-bottom: 100px;
+  }
+
+  .skills__inner {
+    position: static;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    width: calc(100% - 32px);
+    height: auto;
+  }
+
+  .skills__introduction {
+    position: static;
+    gap: 15px;
+    width: 358px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .skills__eyebrow {
+    width: 111px;
+    height: 21px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .skills__card {
+    gap: 32px;
+    width: 358px;
+    max-width: 100%;
+    height: auto;
+    padding: 23px 31px;
+  }
+
+  .skills__card h2 {
+    width: 294px;
+    max-width: 100%;
+    height: 45px;
+    font-size: clamp(42px, calc(18vw - 14px), 56px);
+    line-height: 45px;
+    white-space: nowrap;
+  }
+
+  html[lang="de"] .skills__card h2 {
+    font-size: clamp(33px, calc(15.72vw - 17.3px), 44px);
+  }
+
+  .skills__copy {
+    gap: 24px;
+    width: 294px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .skills__description {
+    width: 294px;
+    max-width: 100%;
+    height: auto;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: left;
+  }
+
+  .skills__contact-copy {
+    gap: 12px;
+    width: 276px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .skills__question {
+    width: 276px;
+    max-width: 100%;
+    height: 24px;
+    font-size: clamp(18px, 5.13vw, 20px);
+    line-height: 24px;
+  }
+
+  .skills__contact-copy > p:last-child {
+    width: 276px;
+    max-width: 100%;
+    height: auto;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .skills__grid {
+    position: static;
+    grid-template-columns: repeat(3, 104px);
+    grid-auto-rows: 110px;
+    gap: 32px 16px;
+    width: 358px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .skills__item,
+  .skills__growth-trigger {
+    width: 104px;
+    height: 110px;
+  }
+
+  .skills__item {
+    gap: 8px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .skills__item--growth {
+    gap: 0;
+  }
+
+  .skills__item > span:last-child,
+  .skills__growth-label {
+    min-height: 38px;
+  }
+
+  .skills__icon img {
+    animation: mobile-skill-state 300ms ease-in 100ms forwards;
+  }
+
+  .skills__item--growth:not(.is-open) .skills__growth-tooltip {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0s, 300ms;
+  }
+
+  .skills__item--growth.is-open .skills__growth-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+}
+
+@media (max-width: 376px) {
+  .skills__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 4px;
+  }
+
+  .skills__item,
+  .skills__growth-trigger {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .skills__icon img {
+    animation-duration: 300ms !important;
   }
 }
