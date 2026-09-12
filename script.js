@@ -60,9 +60,16 @@ if (referencesTrack) {
   let slide = 0;
   let isTransitioning = false;
 
+  function getReferenceStep() {
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const trackGap = Number.parseFloat(getComputedStyle(referencesTrack).columnGap);
+
+    return cardWidth + trackGap;
+  }
+
   function updateCarousel(animate = true) {
     referencesTrack.classList.toggle("references__track--no-transition", !animate);
-    referencesTrack.style.setProperty("--track-offset", `${position * -696}px`);
+    referencesTrack.style.setProperty("--track-offset", `${position * -getReferenceStep()}px`);
 
     cards.forEach((card, index) => {
       card.classList.toggle("is-active", index === position);
@@ -127,10 +134,16 @@ if (referencesTrack) {
     isTransitioning = false;
   });
 
-  updateCarousel(false);
-  requestAnimationFrame(() => {
-    referencesTrack.classList.remove("references__track--no-transition");
-  });
+  function resetCarouselPosition() {
+    isTransitioning = false;
+    updateCarousel(false);
+    requestAnimationFrame(() => {
+      referencesTrack.classList.remove("references__track--no-transition");
+    });
+  }
+
+  window.addEventListener("resize", resetCarouselPosition);
+  resetCarouselPosition();
 }
 
 const contactForm = document.querySelector(".contact__form");
