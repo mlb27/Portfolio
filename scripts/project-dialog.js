@@ -47,9 +47,9 @@ if (projectDialog) {
         de: "Diese App ist ein Slack-Klon. Sie verbessert die Kommunikation und Zusammenarbeit im Team durch eine intuitive Oberfläche, Echtzeitnachrichten und eine übersichtliche Kanalorganisation.",
       },
       technologies: [
-        { name: "JavaScript", icon: "javascript" },
-        { name: "HTML", icon: "html" },
-        { name: "CSS", icon: "css" },
+        { name: "Angular", icon: "angular" },
+        { name: "Firebase", icon: "firebase" },
+        { name: "TypeScript", icon: "typescript" },
       ],
       image: "./assets/images/projects/da-bubble-dialog.png",
       github: "",
