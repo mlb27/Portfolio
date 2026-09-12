@@ -101,3 +101,41 @@
   letter-spacing: -0.04em;
   line-height: 22px;
 }
+
+.mobile-menu-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    height: 82px;
+    background: none;
+  }
+
+  .site-header__inner {
+    align-items: flex-start;
+    width: calc(100% - 32px);
+    height: 50px;
+    margin-top: 32px;
+  }
+
+  .site-header__controls {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    place-items: center;
+  }
+
+  .mobile-menu-button img {
+    width: 48px;
+    height: 48px;
+  }
+}

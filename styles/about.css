@@ -105,3 +105,94 @@
   width: 32px;
   height: 32px;
 }
+
+@media (max-width: 768px) {
+  .about {
+    height: auto;
+    padding: 100px 0;
+  }
+
+  .about__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 32px);
+    gap: 40px;
+    margin-inline: auto;
+    padding-left: 0;
+  }
+
+  .about__photo {
+    width: 358px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .about__photo img {
+    object-position: center 53%;
+  }
+
+  .about__content {
+    width: 358px;
+    max-width: 100%;
+    gap: 16px;
+    margin-top: 0;
+  }
+
+  .about__eyebrow {
+    width: 80px;
+    height: 21px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .about__card {
+    width: 358px;
+    max-width: 100%;
+    height: auto;
+    padding: 26px 31px;
+  }
+
+  .about__card h2 {
+    width: 294px;
+    max-width: 100%;
+    height: 45px;
+    margin: 0 0 32px;
+    font-size: clamp(42px, calc(18vw - 14px), 56px);
+    line-height: 45px;
+    white-space: nowrap;
+  }
+
+  .about__text {
+    width: 298px;
+    max-width: calc(100% + 4px);
+    height: auto;
+    gap: 24px;
+  }
+
+  .about__intro {
+    width: 298px;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .about__highlights {
+    width: 298px;
+    max-width: 100%;
+    height: auto;
+    gap: 16px;
+  }
+
+  .about__highlights li {
+    grid-template-columns: 32px minmax(0, 1fr);
+    width: 298px;
+    max-width: 100%;
+    gap: 24px;
+    margin-left: 0;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+}

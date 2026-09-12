@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/mobile-menu.css">
     <link rel="stylesheet" href="./styles/hero.css">
     <link rel="stylesheet" href="./styles/about.css">
     <link rel="stylesheet" href="./styles/skills.css">
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="./styles/footer.css">
     <title>Moritz Böhm - Portfolio</title>
     <script src="./script.js" defer></script>
+    <script src="./scripts/mobile-menu.js" defer></script>
     <script src="./scripts/project-dialog.js" defer></script>
 </head>
 
@@ -52,8 +54,30 @@
                 <span class="logo__initials" aria-hidden="true">MB</span>
                 <span class="logo__name" aria-hidden="true">Moritz<br>Böhm</span>
             </a>
+
+            <button class="mobile-menu-button" type="button" aria-label="Open navigation"
+                aria-controls="mobile-navigation" aria-expanded="false">
+                <img src="./assets/icons/menu.svg" alt="">
+            </button>
         </div>
     </header>
+
+    <dialog class="mobile-navigation" id="mobile-navigation" aria-label="Mobile navigation">
+        <div class="mobile-navigation__panel">
+            <nav class="mobile-navigation__links" aria-label="Mobile navigation">
+                <a href="#about" data-en="About me" data-de="Über mich">About me</a>
+                <a href="#skills" data-en="Skills" data-de="Fähigkeiten">Skills</a>
+                <a href="#projects" data-en="Projects" data-de="Projekte">Projects</a>
+            </nav>
+
+            <div class="language-switch mobile-navigation__language-switch" aria-label="Select language">
+                <button class="language-switch__button active" type="button" data-language="en"
+                    aria-pressed="true">EN</button>
+                <button class="language-switch__button" type="button" data-language="de"
+                    aria-pressed="false">DE</button>
+            </div>
+        </div>
+    </dialog>
 
     <main id="main-content">
         <section class="hero" id="hero" aria-labelledby="hero-title">
@@ -84,6 +108,9 @@
             <aside class="hero__contact" aria-label="Contact links">
                 <a class="hero__email" href="mailto:ml-boehm@gmx.de">ml-boehm@gmx.de</a>
                 <div class="hero__socials">
+                    <a class="hero__mail-icon" href="mailto:ml-boehm@gmx.de" aria-label="Email">
+                        <img src="./assets/icons/mail.svg" alt="">
+                    </a>
                     <a href="https://github.com/mlb27" target="_blank" rel="noopener noreferrer"
                         aria-label="GitHub profile">
                         <img src="./assets/icons/github.svg" alt="">
