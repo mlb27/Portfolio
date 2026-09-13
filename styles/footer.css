@@ -90,9 +90,39 @@
   outline: 2px solid var(--color-primary);
   outline-offset: 5px;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .site-footer__navigation a,
   .site-footer__navigation a::before {
     transition-duration: 300ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 0 0 25px;
+  }
+
+  .site-footer__inner {
+    width: 358px;
+    max-width: calc(100% - 32px);
+    height: 180px;
+  }
+
+  .site-footer__navigation {
+    top: 0;
+    width: 97px;
+  }
+
+  .site-footer__navigation a {
+    width: 97px;
+  }
+
+  .site-footer__copyright {
+    top: 158px;
+    width: 246px;
+    height: 22px;
+    text-align: center;
+    white-space: nowrap;
   }
 }
