@@ -167,6 +167,7 @@
 .marquee__track {
   width: max-content;
   height: 100%;
+  animation: marquee-scroll 10s linear infinite;
 }
 
 .marquee__group {
@@ -190,6 +191,12 @@
   border-radius: 50%;
   background-color: var(--color-primary);
   content: "";
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes mobile-scroll-indicator {
@@ -292,6 +299,11 @@
 @media (prefers-reduced-motion: reduce) {
   .hero__socials img {
     transition-duration: 100ms !important;
+  }
+
+  .marquee__track {
+    animation-duration: 10s !important;
+    animation-iteration-count: infinite !important;
   }
 }
 
