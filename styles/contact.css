@@ -324,3 +324,138 @@
     line-height: 26px;
   }
 }
+
+@media (max-width: 768px) {
+  .contact {
+    margin-bottom: 100px;
+    padding: 0;
+  }
+
+  .contact__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 64px;
+    width: 358px;
+    max-width: calc(100% - 32px);
+  }
+
+  .contact__subtext {
+    height: 21px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .contact__heading {
+    height: 112px;
+    margin-bottom: 32px;
+    font-size: 56px;
+    line-height: 56px;
+  }
+
+  :lang(de) .contact__heading {
+    height: 88px;
+    font-size: clamp(30px, calc(8.571vw + 2.571px), 36px);
+    line-height: 44px;
+  }
+
+  .contact__ask {
+    height: 24px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .contact__paragraph,
+  .contact__cta {
+    margin: 0;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .contact__fields {
+    border-top: 0;
+    box-shadow: inset 0 1px 0 var(--color-primary);
+  }
+
+  .contact__field {
+    gap: 16px;
+    height: 123px;
+    padding: 32px 16px;
+  }
+
+  .contact__field label {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .contact__field input,
+  .contact__field textarea {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .contact__field textarea {
+    min-height: 19px;
+  }
+
+  .contact__error {
+    top: 72px;
+    left: 16px;
+    line-height: 19px;
+  }
+
+  .contact__consent-group {
+    height: 89px;
+    margin-top: 40px;
+  }
+
+  .contact__consent {
+    height: 64px;
+    gap: 8px;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .contact__consent input {
+    margin: 23px 3px 0;
+  }
+
+  .contact__consent > div {
+    width: calc(100% - 32px);
+    height: 64px;
+  }
+
+  .contact__privacy-button {
+    margin: -5px -4px;
+    padding: 5px 4px;
+  }
+
+  .contact__consent-error {
+    top: 72px;
+    left: 0;
+  }
+
+  .contact__actions {
+    gap: 16px;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 376px) {
+  html[lang="de"] .contact__consent-group {
+    height: 97px;
+  }
+
+  html[lang="de"] .contact__consent,
+  html[lang="de"] .contact__consent > div {
+    height: 72px;
+  }
+
+  html[lang="de"] .contact__consent input {
+    margin-top: 27px;
+  }
+
+  html[lang="de"] .contact__consent-error {
+    top: 80px;
+  }
+}
