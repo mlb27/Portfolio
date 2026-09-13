@@ -200,7 +200,13 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 61.9375rem) and (max-width: 89.9375rem) {
+  .projects__preview {
+    display: none;
+  }
+}
+
+@media (max-width: 990px) {
   .projects {
     height: auto;
     margin-bottom: 100px;

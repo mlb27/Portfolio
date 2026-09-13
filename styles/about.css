@@ -106,7 +106,13 @@
   height: 32px;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 61.9375rem) and (max-width: 89.9375rem) {
+  .about {
+    zoom: calc(100vw / 90rem);
+  }
+}
+
+@media (max-width: 990px) {
   .about {
     height: auto;
     padding: 100px 0;

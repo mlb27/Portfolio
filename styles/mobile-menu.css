@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 990px) {
   .mobile-navigation[open] {
     position: fixed;
     inset: 0;
@@ -105,7 +105,7 @@
   }
 }
 
-@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 990px) and (prefers-reduced-motion: reduce) {
   .mobile-navigation__links a,
   .mobile-navigation__language-switch,
   .mobile-navigation__language-switch .language-switch__button {

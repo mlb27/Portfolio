@@ -50,7 +50,7 @@ if (mobileMenuButton && mobileNavigation) {
 
   window.addEventListener("resize", sizeMobileNavigation);
 
-  const desktopViewport = window.matchMedia("(min-width: 769px)");
+  const desktopViewport = window.matchMedia("(min-width: 991px)");
   desktopViewport.addEventListener("change", (event) => {
     if (event.matches) {
       closeMobileNavigation();

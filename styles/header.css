@@ -106,7 +106,7 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 990px) {
   .site-header {
     height: 82px;
     background: none;

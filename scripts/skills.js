@@ -26,6 +26,6 @@ if (growthMindsetItem && growthMindsetTrigger && growthMindsetTooltip) {
     }
   });
 
-  const desktopViewport = window.matchMedia("(min-width: 769px)");
+  const desktopViewport = window.matchMedia("(min-width: 991px)");
   desktopViewport.addEventListener("change", () => setGrowthMindsetOpen(false));
 }

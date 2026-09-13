@@ -300,7 +300,13 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 61.9375rem) and (max-width: 89.9375rem) {
+  .skills {
+    zoom: calc(100vw / 90rem);
+  }
+}
+
+@media (max-width: 990px) {
   .skills {
     height: auto;
     margin-bottom: 100px;
@@ -451,7 +457,7 @@
   }
 }
 
-@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 990px) and (prefers-reduced-motion: reduce) {
   .skills__icon img {
     animation-duration: 300ms !important;
   }

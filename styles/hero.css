@@ -209,7 +209,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 990px) {
   .hero {
     height: 100vh;
     min-height: 844px;
@@ -307,7 +307,7 @@
   }
 }
 
-@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 990px) and (prefers-reduced-motion: reduce) {
   .hero__mouse span {
     animation-duration: 500ms !important;
     animation-iteration-count: infinite !important;
