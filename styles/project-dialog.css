@@ -312,6 +312,147 @@
   }
 }
 
+@media (min-width: 61.9375rem) and (max-width: 85.3125rem) {
+  .project-dialog {
+    width: 78rem;
+    max-width: none;
+    height: 41rem;
+    max-height: none;
+    zoom: min(calc((100vw - 12rem) / 78rem), calc((100vh - 4rem) / 41rem));
+  }
+}
+
+@media (max-width: 990px) {
+  .project-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-dialog {
+    width: min(22.875rem, 100vw);
+    max-width: 100vw;
+    height: min(52.75rem, 100dvh);
+    max-height: 100dvh;
+    padding: 5.875rem 0.6875rem 1.8125rem;
+    border-radius: 1.25rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .project-dialog::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-dialog__image {
+    position: static;
+    order: 1;
+    width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+    border-radius: 1rem;
+    aspect-ratio: 342 / 216;
+  }
+
+  .project-dialog__content,
+  .project-dialog--long .project-dialog__content {
+    position: static;
+    order: 2;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .project-dialog__heading {
+    gap: 0.5rem;
+    height: auto;
+    min-height: 7.8125rem;
+  }
+
+  .project-dialog__number {
+    height: 4.5rem;
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .project-dialog__heading h2 {
+    height: auto;
+    min-height: 2.8125rem;
+    font-size: 3.5rem;
+    line-height: 2.8125rem;
+    white-space: normal;
+  }
+
+  .project-dialog__details {
+    gap: 1.25rem;
+  }
+
+  .project-dialog__description-group {
+    gap: 1rem;
+  }
+
+  .project-dialog__description-group h3 {
+    height: auto;
+    min-height: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+
+  .project-dialog__description-group p {
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+  }
+
+  .project-dialog__technologies {
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    height: auto;
+    min-height: 3.25rem;
+  }
+
+  .project-dialog__technology-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-basis: 1.25rem;
+  }
+
+  .project-dialog__links {
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .project-dialog__close {
+    top: 0.9375rem;
+    right: 0.9375rem;
+  }
+
+  .project-dialog__next,
+  .project-dialog--later .project-dialog__next {
+    position: static;
+    order: 3;
+    align-self: flex-end;
+    width: 8.6875rem;
+    margin-top: 1.5625rem;
+    margin-right: 0.25rem;
+    flex: 0 0 2.5rem;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+  }
+
+  html[lang="de"] .project-dialog__next {
+    width: 11rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .project-dialog__links {
+    gap: 1.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .project-dialog__link,
   .project-dialog__close::before,

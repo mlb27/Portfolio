@@ -150,6 +150,7 @@ if (projectDialog) {
       lastTrigger = trigger;
       renderProject(index);
       projectDialog.showModal();
+      projectDialog.scrollTop = 0;
       projectDialog.focus({ preventScroll: true });
     });
   });
