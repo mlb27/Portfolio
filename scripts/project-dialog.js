@@ -3,48 +3,31 @@ const projectDialog = document.querySelector("#project-dialog");
 if (projectDialog) {
   const projects = [
     {
-      key: "join",
+      key: "join-issue-collector",
       number: "01",
-      name: "Join",
+      name: "Join Issue Collector",
       description: {
-        en: "Task manager inspired by the Kanban System. Create and organize tasks using drag and drop functions, assign users and categories.",
-        de: "Ein vom Kanban-System inspirierter Task-Manager. Erstelle und organisiere Aufgaben per Drag-and-drop und weise Benutzer sowie Kategorien zu.",
+        en: "A Kanban issue collector that extends Join with a public stakeholder entry and an AI-assisted n8n email-to-triage workflow. Guests and registered users work with the same Firebase-backed board.",
+        de: "Ein Kanban-Issue-Collector, der Join um einen öffentlichen Stakeholder-Eingang und einen KI-gestützten n8n-Workflow von E-Mails zur Triage erweitert. Gäste und angemeldete Nutzer arbeiten im selben Firebase-Board.",
       },
       technologies: [
-        { name: "CSS", icon: "css" },
         { name: "HTML", icon: "html" },
-        { name: "Firebase", icon: "firebase" },
-        { name: "Angular", icon: "angular" },
-        { name: "TypeScript", icon: "typescript" },
-      ],
-      image: "./assets/images/projects/join-dialog.png",
-      github: "https://github.com/mlb27/Join",
-      live: "",
-    },
-    {
-      key: "el-pollo-loco",
-      number: "02",
-      name: "El Pollo Loco",
-      description: {
-        en: "Jump, run and throw game based on object-oriented approach. Help Pepe to find coins and tabasco salsa to fight against the crazy hen.",
-        de: "Ein Jump-and-Run-Spiel auf Basis eines objektorientierten Ansatzes. Hilf Pepe, Münzen und Tabasco-Salsa für den Kampf gegen das verrückte Huhn zu finden.",
-      },
-      technologies: [
+        { name: "CSS", icon: "css" },
         { name: "JavaScript", icon: "javascript" },
-        { name: "HTML", icon: "html" },
-        { name: "CSS", icon: "css" },
+        { name: "Firebase", icon: "firebase" },
+        { name: "n8n", icon: "n8n" },
       ],
-      image: "./assets/images/projects/el-pollo-loco-dialog.png",
-      github: "https://github.com/mlb27/El-Pollo-Loco",
-      live: "",
+      image: "./assets/images/projects/join-issue-collector-dialog.png",
+      github: "https://github.com/mlb27/Join-Issue-Collector",
+      live: "https://moritz-boehm.developerakademie.net/join-issue-collector/",
     },
     {
       key: "da-bubble",
-      number: "03",
-      name: "DABubble",
+      number: "02",
+      name: "DA Bubble",
       description: {
-        en: "This App is a Slack Clone App. It revolutionizes team communication and collaboration with its intuitive interface, real-time messaging, and robust channel organization.",
-        de: "Diese App ist ein Slack-Klon. Sie verbessert die Kommunikation und Zusammenarbeit im Team durch eine intuitive Oberfläche, Echtzeitnachrichten und eine übersichtliche Kanalorganisation.",
+        en: "A Slack-inspired team chat with channels, direct messages, threads and emoji reactions. Angular and Firebase provide real-time communication across the application.",
+        de: "Ein von Slack inspirierter Team-Chat mit Channels, Direktnachrichten, Threads und Emoji-Reaktionen. Angular und Firebase ermöglichen die Echtzeitkommunikation in der gesamten Anwendung.",
       },
       technologies: [
         { name: "Angular", icon: "angular" },
@@ -53,6 +36,24 @@ if (projectDialog) {
       ],
       image: "./assets/images/projects/da-bubble-dialog.png",
       github: "https://github.com/ChristopherBraun196/DA-Bubble",
+      live: "",
+    },
+    {
+      key: "code-a-cuisine",
+      number: "03",
+      name: "Code à Cuisine",
+      description: {
+        en: "An AI-powered recipe generator that creates three tailored recipes from available ingredients and personal cooking preferences. n8n handles the generation while Supabase stores validated recipes.",
+        de: "Ein KI-gestützter Rezeptgenerator, der aus vorhandenen Zutaten und persönlichen Kochpräferenzen drei passende Rezepte erstellt. n8n übernimmt die Generierung, Supabase speichert die validierten Rezepte.",
+      },
+      technologies: [
+        { name: "Angular", icon: "angular" },
+        { name: "TypeScript", icon: "typescript" },
+        { name: "SCSS", icon: "sass" },
+        { name: "Supabase", icon: "supabase" },
+      ],
+      image: "./assets/images/projects/code-a-cuisine-dialog.jpg",
+      github: "https://github.com/mlb27/code-a-cuisine",
       live: "",
     },
   ];
@@ -117,7 +118,6 @@ if (projectDialog) {
     const language = getLanguage();
 
     currentProject = index;
-    projectDialog.classList.toggle("project-dialog--long", project.key === "da-bubble");
     projectDialog.classList.toggle("project-dialog--later", index > 0);
     dialogNumber.textContent = project.number;
     dialogTitle.textContent = project.name;

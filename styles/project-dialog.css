@@ -32,10 +32,6 @@
   width: 480px;
 }
 
-.project-dialog--long .project-dialog__content {
-  top: 79px;
-}
-
 .project-dialog__heading {
   display: flex;
   flex-direction: column;
@@ -55,10 +51,10 @@
   height: 51px;
   margin: 0;
   font-family: var(--font-heading);
-  font-size: 64px;
+  font-size: 38px;
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 51px;
+  line-height: 42px;
   white-space: nowrap;
 }
 
@@ -145,6 +141,18 @@
 
 .project-dialog__technology-icon--firebase {
   mask-image: url("../assets/icons/firebase.svg");
+}
+
+.project-dialog__technology-icon--supabase {
+  mask-image: url("../assets/icons/skill-supabase.svg");
+}
+
+.project-dialog__technology-icon--n8n {
+  mask-image: url("../assets/icons/skill-n8n.svg");
+}
+
+.project-dialog__technology-icon--sass {
+  mask-image: url("../assets/icons/skill-sass.svg");
 }
 
 .project-dialog__links {
@@ -354,8 +362,7 @@
     aspect-ratio: 342 / 216;
   }
 
-  .project-dialog__content,
-  .project-dialog--long .project-dialog__content {
+  .project-dialog__content {
     position: static;
     order: 2;
     gap: 2rem;
@@ -378,9 +385,9 @@
 
   .project-dialog__heading h2 {
     height: auto;
-    min-height: 2.8125rem;
-    font-size: 3.5rem;
-    line-height: 2.8125rem;
+    min-height: 2.125rem;
+    font-size: 1.75rem;
+    line-height: 2.125rem;
     white-space: normal;
   }
 

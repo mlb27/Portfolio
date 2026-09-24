@@ -86,7 +86,7 @@
 }
 
 .projects__item:hover,
-.projects__item:focus-within {
+.projects__item:has(.projects__trigger:focus-visible) {
   background-color: rgb(var(--color-primary-rgb) / 30%);
 }
 
@@ -162,31 +162,37 @@
   object-fit: cover;
 }
 
-.projects__item--join .projects__preview {
+.projects__item--join-issue-collector .projects__preview {
   top: -10px;
   width: 315.24px;
 }
 
-.projects__item--join .projects__preview-lines {
+.projects__item--join-issue-collector .projects__preview-lines {
   left: 23px;
 }
 
-.projects__item--join .projects__preview-image {
+.projects__item--join-issue-collector .projects__preview-image {
   width: 295px;
 }
 
-.projects__item--el-pollo-loco .projects__preview {
+.projects__item--da-bubble .projects__preview {
   top: -42px;
 }
 
-.projects__item--da-bubble .projects__preview {
+.projects__item--code-a-cuisine .projects__preview {
   top: -73px;
+}
+
+.projects__item--code-a-cuisine .projects__preview-image {
+  padding: 36px;
+  background-color: #396039;
+  object-fit: contain;
 }
 
 .projects__item:hover .projects__arrow,
 .projects__item:hover .projects__preview,
-.projects__item:focus-within .projects__arrow,
-.projects__item:focus-within .projects__preview {
+.projects__trigger:focus-visible .projects__arrow,
+.projects__trigger:focus-visible .projects__preview {
   opacity: 1;
   visibility: visible;
   transition-delay: 0s;
@@ -263,7 +269,7 @@
   }
 
   .projects__item:hover,
-  .projects__item:focus-within {
+  .projects__item:has(.projects__trigger:focus-visible) {
     background-color: transparent;
   }
 
