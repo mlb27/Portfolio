@@ -84,7 +84,15 @@ if (referencesTrack) {
       dot.classList.toggle("is-active", index === slide);
     });
 
-    status.textContent = `Reference ${slide + 1} of 3`;
+    updateReferenceStatus();
+  }
+
+  function updateReferenceStatus() {
+    const isGerman = document.documentElement.lang === "de";
+    const label = isGerman ? "Referenz" : "Reference";
+    const separator = isGerman ? "von" : "of";
+
+    status.textContent = `${label} ${slide + 1} ${separator} ${originalCards.length}`;
   }
 
   function moveCarousel(direction) {
@@ -100,6 +108,9 @@ if (referencesTrack) {
 
   previousButton.addEventListener("click", () => moveCarousel(-1));
   nextButton.addEventListener("click", () => moveCarousel(1));
+  languageButtons.forEach((button) => {
+    button.addEventListener("click", updateReferenceStatus);
+  });
 
   referencesTrack.addEventListener("click", (event) => {
     const card = event.target.closest(".references__card");
