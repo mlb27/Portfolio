@@ -18,7 +18,7 @@ if (projectDialog) {
         { name: "TypeScript", icon: "typescript" },
       ],
       image: "./assets/images/projects/join-dialog.png",
-      github: "https://github.com/willidevac/Join",
+      github: "https://github.com/mlb27/Join",
       live: "",
     },
     {

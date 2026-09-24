@@ -1,0 +1,211 @@
+{
+  "name": "Portfolio contact form",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "portfolio-contact",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        0
+      ],
+      "id": "d7d5a462-ed39-4dc3-b280-155592ae06aa",
+      "name": "Receive contact form",
+      "webhookId": "2bdefdba-d1a9-4913-9913-c0e28685ec35"
+    },
+    {
+      "parameters": {
+        "jsCode": "const request = $input.first().json;\nconst body = request.body ?? request;\n\nconst name = String(body.name ?? '').trim().replace(/[\\r\\n]+/g, ' ');\nconst email = String(body.email ?? '').trim().replace(/[\\r\\n]+/g, '');\nconst message = String(body.message ?? '').trim();\nconst website = String(body.website ?? '').trim();\nconst consentValue = String(body.consent ?? '').toLowerCase();\nconst hasConsent = body.consent === true || ['on', 'true', '1', 'yes'].includes(consentValue);\nconst emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n\nconst isValid =\n  website === '' &&\n  name.length >= 1 &&\n  name.length <= 100 &&\n  email.length <= 254 &&\n  emailPattern.test(email) &&\n  message.length >= 1 &&\n  message.length <= 5000 &&\n  hasConsent;\n\nreturn [{\n  json: {\n    isValid,\n    name,\n    email,\n    message,\n    receivedAt: new Date().toISOString(),\n  },\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -336,
+        0
+      ],
+      "id": "465af6e9-aec7-4d64-9085-b51a9a475efe",
+      "name": "Validate form data"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ab68334e-d843-4ea6-9f87-9ae7533be7ae",
+              "leftValue": "={{ $json.isValid }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -112,
+        0
+      ],
+      "id": "10d0c481-2215-4cc1-a072-58ec37bfc48f",
+      "name": "Form data valid?"
+    },
+    {
+      "parameters": {
+        "fromEmail": "Portfolio <REPLACE_WITH_SMTP_SENDER@example.com>",
+        "toEmail": "ml-boehm@gmx.de",
+        "subject": "=Neue Portfolio-Nachricht von {{ $json.name }}",
+        "emailFormat": "text",
+        "text": "=Neue Nachricht über das Portfolio\n\nName: {{ $json.name }}\nE-Mail: {{ $json.email }}\nEingegangen: {{ $json.receivedAt }}\n\nNachricht:\n{{ $json.message }}",
+        "options": {
+          "appendAttribution": false,
+          "replyTo": "={{ $json.email }}"
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        144,
+        -96
+      ],
+      "id": "24a75d35-b9de-4c1a-83c7-a335799d4434",
+      "name": "Send contact email"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"success\": true\n}",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        400,
+        -96
+      ],
+      "id": "2379284e-096f-4f0f-aebf-8af0c3ee3292",
+      "name": "Return success"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"success\": false,\n  \"message\": \"Invalid form data\"\n}",
+        "options": {
+          "responseCode": 422,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        144,
+        112
+      ],
+      "id": "37f24cff-802f-444a-b36e-36f34537b9dd",
+      "name": "Reject invalid form data"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Receive contact form": {
+      "main": [
+        [
+          {
+            "node": "Validate form data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate form data": {
+      "main": [
+        [
+          {
+            "node": "Form data valid?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Form data valid?": {
+      "main": [
+        [
+          {
+            "node": "Send contact email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reject invalid form data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send contact email": {
+      "main": [
+        [
+          {
+            "node": "Return success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a37f7e87-bef0-461c-bcea-1053ee02a86d",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}
