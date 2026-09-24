@@ -171,10 +171,17 @@ if (contactForm) {
   const submitButton = contactForm.querySelector(".contact__submit");
   const successStatus = contactForm.querySelector(".contact__status--success");
   const errorStatus = contactForm.querySelector(".contact__status--error");
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   let isSubmitting = false;
 
   function isFieldValid(field) {
-    return field.value.trim().length > 0 && field.validity.valid;
+    const value = field.value.trim();
+
+    if (value.length === 0 || !field.validity.valid) {
+      return false;
+    }
+
+    return field.type !== "email" || emailPattern.test(value);
   }
 
   function showFieldError(field) {
