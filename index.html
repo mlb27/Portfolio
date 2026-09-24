@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./assets/favicon.png">
     <meta name="description" content="Dev portfolio of Moritz Böhm.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Karla:wght@400;500;700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/mobile-menu.css">
@@ -35,14 +30,16 @@
     <header class="site-header">
         <div class="site-header__inner">
             <div class="site-header__controls">
-                <div class="language-switch" aria-label="Select language">
+                <div class="language-switch" aria-label="Select language"
+                    data-aria-label-en="Select language" data-aria-label-de="Sprache auswählen">
                     <button class="language-switch__button active" type="button" data-language="en"
                         aria-pressed="true">EN</button>
                     <button class="language-switch__button" type="button" data-language="de"
                         aria-pressed="false">DE</button>
                 </div>
 
-                <nav aria-label="Main navigation">
+                <nav aria-label="Main navigation" data-aria-label-en="Main navigation"
+                    data-aria-label-de="Hauptnavigation">
                     <ul class="main-navigation">
                         <li><a href="#about" data-en="About me" data-de="Über mich">About me</a></li>
                         <li><a href="#skills" data-en="Skills" data-de="Fähigkeiten">Skills</a></li>
@@ -51,27 +48,33 @@
                 </nav>
             </div>
 
-            <a class="logo" href="#hero" aria-label="Moritz Böhm - back to top">
+            <a class="logo" href="#hero" aria-label="Moritz Böhm - back to top"
+                data-aria-label-en="Moritz Böhm - back to top" data-aria-label-de="Moritz Böhm - zurück nach oben">
                 <span class="logo__initials" aria-hidden="true">MB</span>
                 <span class="logo__name" aria-hidden="true">Moritz<br>Böhm</span>
             </a>
 
             <button class="mobile-menu-button" type="button" aria-label="Open navigation"
-                aria-controls="mobile-navigation" aria-expanded="false">
+                aria-controls="mobile-navigation" aria-expanded="false" data-open-label-en="Open navigation"
+                data-open-label-de="Navigation öffnen" data-close-label-en="Close navigation"
+                data-close-label-de="Navigation schließen">
                 <img src="./assets/icons/menu.svg" alt="">
             </button>
         </div>
     </header>
 
-    <dialog class="mobile-navigation" id="mobile-navigation" aria-label="Mobile navigation">
+    <dialog class="mobile-navigation" id="mobile-navigation" aria-label="Mobile navigation"
+        data-aria-label-en="Mobile navigation" data-aria-label-de="Mobile Navigation">
         <div class="mobile-navigation__panel">
-            <nav class="mobile-navigation__links" aria-label="Mobile navigation">
+            <nav class="mobile-navigation__links" aria-label="Mobile navigation"
+                data-aria-label-en="Mobile navigation" data-aria-label-de="Mobile Navigation">
                 <a href="#about" data-en="About me" data-de="Über mich">About me</a>
                 <a href="#skills" data-en="Skills" data-de="Fähigkeiten">Skills</a>
                 <a href="#projects" data-en="Projects" data-de="Projekte">Projects</a>
             </nav>
 
-            <div class="language-switch mobile-navigation__language-switch" aria-label="Select language">
+            <div class="language-switch mobile-navigation__language-switch" aria-label="Select language"
+                data-aria-label-en="Select language" data-aria-label-de="Sprache auswählen">
                 <button class="language-switch__button active" type="button" data-language="en"
                     aria-pressed="true">EN</button>
                 <button class="language-switch__button" type="button" data-language="de"
@@ -106,18 +109,22 @@
                 <span class="hero__line hero__line--primary"></span>
             </div>
 
-            <aside class="hero__contact" aria-label="Contact links">
+            <aside class="hero__contact" aria-label="Contact links" data-aria-label-en="Contact links"
+                data-aria-label-de="Kontaktlinks">
                 <a class="hero__email" href="mailto:ml-boehm@gmx.de">ml-boehm@gmx.de</a>
                 <div class="hero__socials">
-                    <a class="hero__mail-icon" href="mailto:ml-boehm@gmx.de" aria-label="Email">
+                    <a class="hero__mail-icon" href="mailto:ml-boehm@gmx.de" aria-label="Email"
+                        data-aria-label-en="Email" data-aria-label-de="E-Mail">
                         <img src="./assets/icons/mail.svg" alt="">
                     </a>
                     <a href="https://github.com/mlb27" target="_blank" rel="noopener noreferrer"
-                        aria-label="GitHub profile">
+                        aria-label="GitHub profile" data-aria-label-en="GitHub profile"
+                        data-aria-label-de="GitHub-Profil">
                         <img src="./assets/icons/github.svg" alt="">
                     </a>
                     <a href="https://www.linkedin.com/in/moritz-b%C3%B6hm-5630b2435/" target="_blank"
-                        rel="noopener noreferrer" aria-label="LinkedIn">
+                        rel="noopener noreferrer" aria-label="LinkedIn" data-aria-label-en="LinkedIn profile"
+                        data-aria-label-de="LinkedIn-Profil">
                         <img src="./assets/icons/linkedin.svg" alt="">
                     </a>
                 </div>
@@ -232,7 +239,8 @@
                     </div>
                 </div>
 
-                <ul class="skills__grid" aria-label="Technology skills">
+                <ul class="skills__grid" aria-label="Technology skills" data-aria-label-en="Technology skills"
+                    data-aria-label-de="Technische Fähigkeiten">
                     <li class="skills__item skills__item--compact">
                         <span class="skills__icon"><img src="./assets/icons/skill-html.svg" alt=""></span>
                         <span>HTML</span>
@@ -439,12 +447,14 @@
 
             <div class="references__navigation">
                 <button class="references__arrow references__arrow--previous" type="button"
-                    aria-label="Show previous reference"></button>
+                    aria-label="Show previous reference" data-aria-label-en="Show previous reference"
+                    data-aria-label-de="Vorherige Referenz anzeigen"></button>
                 <span class="references__dot is-active" aria-hidden="true"></span>
                 <span class="references__dot" aria-hidden="true"></span>
                 <span class="references__dot" aria-hidden="true"></span>
                 <button class="references__arrow references__arrow--next" type="button"
-                    aria-label="Show next reference"></button>
+                    aria-label="Show next reference" data-aria-label-en="Show next reference"
+                    data-aria-label-de="Nächste Referenz anzeigen"></button>
             </div>
             <p class="references__status" aria-live="polite">Reference 1 of 3</p>
         </section>
@@ -471,7 +481,12 @@
                     </p>
                 </div>
 
-                <form class="contact__form" aria-label="Contact" aria-describedby="contact-demo-note">
+                <form class="contact__form" action="./send_mail.php" method="post" aria-label="Contact"
+                    data-aria-label-en="Contact" data-aria-label-de="Kontakt">
+                    <div class="contact__honeypot" aria-hidden="true">
+                        <label for="contact-website">Website</label>
+                        <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="contact__fields">
                         <div class="contact__field">
                             <label for="contact-name" data-en="What's your name?" data-de="Wie heißt du?">What's your name?</label>
@@ -505,36 +520,42 @@
                                 aria-describedby="contact-consent-error">
                             <div>
                                 <label for="contact-consent" data-en="I've read the" data-de="Ich habe die">I've read the</label>
-                                <button class="contact__privacy-button" type="button" aria-expanded="false"
-                                    aria-controls="contact-privacy" data-en="privacy policy" data-de="Datenschutzhinweise">privacy policy</button>
-                                <label for="contact-consent" data-en="and agree to the processing of my data as outlined."
-                                    data-de="gelesen und stimme der beschriebenen Verarbeitung meiner Daten zu.">and agree to the processing of my data as outlined.</label>
+                                <a class="contact__privacy-link" href="./privacy-policy.html" target="_blank"
+                                    rel="noopener noreferrer"
+                                    data-en="privacy policy" data-de="Datenschutzerklärung">privacy policy</a>
+                                <label for="contact-consent" data-en="and understand how my data is processed."
+                                    data-de="gelesen und verstanden, wie meine Daten verarbeitet werden.">and understand how my data is processed.</label>
                             </div>
                         </div>
                         <p class="contact__consent-error" id="contact-consent-error" hidden
-                            data-en="Please accept the privacy policy."
-                            data-de="Bitte akzeptiere die Datenschutzerklärung.">Please accept the privacy policy.</p>
+                            data-en="Please confirm that you have read the privacy policy."
+                            data-de="Bitte bestätige, dass du die Datenschutzerklärung gelesen hast.">Please confirm that you have read the privacy policy.</p>
                     </div>
-                    <p class="contact__note" id="contact-privacy" hidden
-                        data-en="Placeholder for the privacy policy. This demo does not send or save your entries."
-                        data-de="Platzhalter für die Datenschutzerklärung. Diese Demo versendet und speichert deine Eingaben nicht.">
-                        Placeholder for the privacy policy. This demo does not send or save your entries.
-                    </p>
                     <div class="contact__actions">
                         <button class="button contact__submit" type="submit" disabled>
                             <span class="button__text" data-en="Say Hello :)" data-de="Sag Hallo :D">Say Hello :)</span>
                             <span class="button__text button__text--clone" aria-hidden="true"
                                 data-en="Say Hello :)" data-de="Sag Hallo :D">Say Hello :)</span>
                         </button>
-                        <p class="contact__note" id="contact-demo-note" data-en="Demo form — no message will be sent."
-                            data-de="Demoformular - es wird keine Nachricht versendet.">Demo form — no message will be sent.</p>
-                        <p class="contact__status" role="status" hidden
-                            data-en="Thanks! The demo validation worked. Your message has not been sent."
-                            data-de="Danke! Die Prüfung der Demo hat funktioniert. Deine Nachricht wurde nicht versendet.">
-                            Thanks! The demo validation worked. Your message has not been sent.
-                        </p>
+                        <div class="contact__feedback">
+                            <p class="contact__status contact__status--success" role="status" hidden
+                                data-en="Thanks! Your message has been sent."
+                                data-de="Danke! Deine Nachricht wurde versendet.">
+                                Thanks! Your message has been sent.
+                            </p>
+                            <p class="contact__status contact__status--error" role="alert" hidden
+                                data-en="Your message could not be sent. Please try again or contact me by email."
+                                data-de="Deine Nachricht konnte nicht versendet werden. Versuche es erneut oder kontaktiere mich per E-Mail.">
+                                Your message could not be sent. Please try again or contact me by email.
+                            </p>
+                        </div>
                     </div>
-                    <noscript><p class="contact__note">This demo requires JavaScript. Contact: <a href="mailto:ml-boehm@gmx.de">ml-boehm@gmx.de</a></p></noscript>
+                    <noscript>
+                        <p class="contact__note">
+                            This contact form requires JavaScript. Dieses Kontaktformular benötigt JavaScript.
+                            Contact: <a href="mailto:ml-boehm@gmx.de">ml-boehm@gmx.de</a>
+                        </p>
+                    </noscript>
                 </form>
             </div>
         </section>
@@ -581,7 +602,8 @@
     <footer class="site-footer" id="site-footer">
         <div class="site-footer__inner">
             <div class="site-footer__identity">
-                <a class="logo" href="#hero" aria-label="Moritz Böhm - back to top">
+                <a class="logo" href="#hero" aria-label="Moritz Böhm - back to top"
+                    data-aria-label-en="Moritz Böhm - back to top" data-aria-label-de="Moritz Böhm - zurück nach oben">
                     <span class="logo__initials" aria-hidden="true">MB</span>
                     <span class="logo__name" aria-hidden="true">Moritz<br>Böhm</span>
                 </a>
@@ -593,12 +615,14 @@
 
             <p class="site-footer__copyright">© Moritz Böhm 2026</p>
 
-            <nav class="site-footer__navigation" aria-label="Footer navigation">
+            <nav class="site-footer__navigation" aria-label="Footer navigation"
+                data-aria-label-en="Footer navigation" data-aria-label-de="Footer-Navigation">
                 <a href="https://github.com/mlb27" target="_blank" rel="noopener noreferrer">Github</a>
                 <a href="https://www.linkedin.com/in/moritz-b%C3%B6hm-5630b2435/" target="_blank"
                     rel="noopener noreferrer">LinkedIn</a>
                 <a href="mailto:ml-boehm@gmx.de" data-en="Email" data-de="E-Mail">Email</a>
                 <a href="./legal-notice.html" data-en="Legal Notice" data-de="Impressum">Legal Notice</a>
+                <a href="./privacy-policy.html" data-en="Privacy Policy" data-de="Datenschutz">Privacy Policy</a>
             </nav>
         </div>
     </footer>

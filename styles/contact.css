@@ -56,9 +56,18 @@
 }
 
 .contact__form {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
+}
+
+.contact__honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .contact__fields {
@@ -177,17 +186,15 @@
   cursor: pointer;
 }
 
-.contact__privacy-button {
-  padding: 0;
-  border: 0;
-  background: transparent;
+.contact__privacy-link {
   color: var(--color-primary);
   font-family: var(--font-heading);
   font-size: inherit;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.contact__privacy-button:hover,
+.contact__privacy-link:hover,
+.contact__privacy-link:focus-visible,
 .contact__cta a:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -200,6 +207,10 @@
   gap: 16px;
   margin-top: 16px;
   text-align: center;
+}
+
+.contact__feedback {
+  min-height: 20px;
 }
 
 .contact__submit {
@@ -258,6 +269,10 @@
 
 .contact__status {
   color: var(--color-primary);
+}
+
+.contact__status--error {
+  color: #ff8fa3;
 }
 
 .contact__error,
@@ -425,7 +440,7 @@
     height: 64px;
   }
 
-  .contact__privacy-button {
+  .contact__privacy-link {
     margin: -5px -4px;
     padding: 5px 4px;
   }

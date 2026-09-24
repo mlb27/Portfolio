@@ -12,6 +12,10 @@ function setLanguage(language) {
     element.placeholder = element.getAttribute(`data-placeholder-${language}`);
   });
 
+  document.querySelectorAll("[data-aria-label-en][data-aria-label-de]").forEach((element) => {
+    element.setAttribute("aria-label", element.getAttribute(`data-aria-label-${language}`));
+  });
+
   const contactForm = document.querySelector(".contact__form");
   if (contactForm) {
     contactForm.setAttribute("aria-label", language === "de" ? "Kontakt" : "Contact");
@@ -160,15 +164,14 @@ if (referencesTrack) {
 const contactForm = document.querySelector(".contact__form");
 
 if (contactForm) {
-  // This is a local demo: never send, store, or clear the visitor's entries.
   contactForm.noValidate = true;
-  const fields = [...contactForm.querySelectorAll(".contact__field input, textarea")];
+  const fields = [...contactForm.querySelectorAll(".contact__field input, .contact__field textarea")];
   const consent = document.querySelector("#contact-consent");
   const consentError = document.querySelector("#contact-consent-error");
   const submitButton = contactForm.querySelector(".contact__submit");
-  const status = contactForm.querySelector(".contact__status");
-  const privacyButton = contactForm.querySelector(".contact__privacy-button");
-  const privacyNote = document.querySelector("#contact-privacy");
+  const successStatus = contactForm.querySelector(".contact__status--success");
+  const errorStatus = contactForm.querySelector(".contact__status--error");
+  let isSubmitting = false;
 
   function isFieldValid(field) {
     return field.value.trim().length > 0 && field.validity.valid;
@@ -200,9 +203,22 @@ if (contactForm) {
     consentError.hidden = true;
   }
 
+  function isFormValid() {
+    return consent.checked && fields.every(isFieldValid);
+  }
+
+  function updateSubmitButton() {
+    submitButton.disabled = isSubmitting || !isFormValid();
+  }
+
+  function hideFormStatus() {
+    successStatus.hidden = true;
+    errorStatus.hidden = true;
+  }
+
   function updateContactForm() {
-    submitButton.disabled = !consent.checked || !fields.every(isFieldValid);
-    status.hidden = true;
+    updateSubmitButton();
+    hideFormStatus();
   }
 
   fields.forEach((field) => {
@@ -214,22 +230,42 @@ if (contactForm) {
   consent.addEventListener("blur", showConsentError);
   consent.addEventListener("focus", hideConsentError);
   consent.addEventListener("change", updateContactForm);
-  privacyButton.addEventListener("click", () => {
-    privacyNote.hidden = !privacyNote.hidden;
-    privacyButton.setAttribute("aria-expanded", String(!privacyNote.hidden));
-  });
-
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     fields.forEach(showFieldError);
     showConsentError();
     updateContactForm();
-    if (submitButton.disabled) {
+
+    if (!isFormValid()) {
       const invalidField = fields.find((field) => !isFieldValid(field));
       (invalidField || consent).focus();
       return;
     }
-    status.hidden = false;
+
+    isSubmitting = true;
+    updateSubmitButton();
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact form request failed");
+      }
+
+      contactForm.reset();
+      fields.forEach(hideFieldError);
+      hideConsentError();
+      successStatus.hidden = false;
+    } catch (error) {
+      errorStatus.hidden = false;
+    } finally {
+      isSubmitting = false;
+      updateSubmitButton();
+    }
   });
 
   updateContactForm();

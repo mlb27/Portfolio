@@ -1,0 +1,223 @@
+.legal-page {
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      29deg,
+      var(--color-background) 23%,
+      rgb(var(--color-primary-rgb) / 30%) 100%
+    ),
+    var(--color-background);
+  background-attachment: fixed;
+}
+
+.legal-notice {
+  width: min(calc(100% - 192px), var(--content-width));
+  min-height: calc(100vh - 238px);
+  margin-inline: auto;
+  padding-block: 149px 48px;
+}
+
+.legal-notice__back {
+  display: none;
+}
+
+.legal-notice__content h1 {
+  margin: 0 0 64px;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 64px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.legal-notice__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: min(968px, calc(100% - 240px));
+  margin-inline: auto;
+}
+
+.legal-notice__section h2,
+.legal-notice__section h3,
+.legal-notice__section p,
+.legal-notice__section address {
+  margin: 0;
+}
+
+.legal-notice__section h2,
+.legal-notice__section h3 {
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.legal-notice__section h3 {
+  margin-top: 20px;
+}
+
+.legal-notice__section p,
+.legal-notice__section address {
+  color: var(--color-primary);
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.2;
+}
+
+.legal-notice__section h2 + p,
+.legal-notice__section h2 + address,
+.legal-notice__section h2 + .legal-notice__translation p:first-child,
+.legal-notice__section h3 + p {
+  margin-top: 2px;
+}
+
+.legal-notice__section p + p {
+  margin-top: 20px;
+}
+
+.legal-notice__section strong {
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+.legal-notice__notice {
+  padding: 16px;
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+  background-color: rgb(var(--color-primary-rgb) / 10%);
+}
+
+.legal-notice__translation--de {
+  display: none;
+}
+
+html[lang="de"] .legal-notice__translation--en {
+  display: none;
+}
+
+html[lang="de"] .legal-notice__translation--de {
+  display: block;
+}
+
+.legal-notice__section a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.legal-notice__section a:hover,
+.legal-notice__section a:focus-visible {
+  color: var(--color-text);
+}
+
+@media (max-width: 990px) {
+  .legal-page {
+    background:
+      linear-gradient(
+        29deg,
+        var(--color-background) 23%,
+        rgb(var(--color-primary-rgb) / 30%) 100%
+      ),
+      var(--color-background);
+  }
+
+  .legal-notice {
+    position: relative;
+    width: 358px;
+    max-width: calc(100% - 32px);
+    min-height: 0;
+    padding-block: 180px 64px;
+  }
+
+  .legal-notice__back {
+    position: absolute;
+    top: 101px;
+    left: 0;
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+
+  .legal-notice__back::before,
+  .legal-notice__back::after {
+    position: absolute;
+    content: "";
+  }
+
+  .legal-notice__back::before {
+    top: 19px;
+    left: 8px;
+    width: 20px;
+    height: 1px;
+    background-color: var(--color-text);
+  }
+
+  .legal-notice__back::after {
+    top: 13px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+    border-bottom: 1px solid var(--color-text);
+    border-left: 1px solid var(--color-text);
+    transform: rotate(45deg);
+  }
+
+  .legal-notice__back:hover::before,
+  .legal-notice__back:focus-visible::before {
+    background-color: var(--color-primary);
+  }
+
+  .legal-notice__back:hover::after,
+  .legal-notice__back:focus-visible::after {
+    border-color: var(--color-primary);
+  }
+
+  .legal-notice__back:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .legal-notice__content h1 {
+    margin-bottom: 32px;
+    color: var(--color-text);
+    font-size: 32px;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .legal-notice__sections {
+    gap: 24px;
+    width: 100%;
+  }
+
+  .legal-notice__section h2,
+  .legal-notice__section h3 {
+    font-size: 19px;
+    line-height: 1.2;
+  }
+
+  .legal-notice__imprint h2 {
+    margin-bottom: 16px;
+    font-size: 23px;
+  }
+
+  .legal-notice__section p,
+  .legal-notice__section address {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .legal-page .site-footer {
+    padding-bottom: 40px;
+  }
+
+  .legal-page .site-footer__inner {
+    height: 220px;
+  }
+
+  .legal-page .site-footer__copyright {
+    top: 198px;
+  }
+}
