@@ -36,7 +36,7 @@ if (projectDialog) {
       ],
       image: "./assets/images/projects/da-bubble-dialog.png",
       github: "https://github.com/mlb27/DA-Bubble",
-      live: "",
+      live: "https://da-bubble.moritz-böhm.de/",
     },
     {
       key: "code-a-cuisine",

@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "da-bubble-bdd01",
+    "public": "dabubble",
+    "ignore": [
+      "firebase.da-bubble.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
