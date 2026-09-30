@@ -1,10 +1,9 @@
 const languageButtons = document.querySelectorAll("[data-language]");
-const translatedElements = document.querySelectorAll("[data-en][data-de]");
 
 function setLanguage(language) {
   document.documentElement.lang = language;
 
-  translatedElements.forEach((element) => {
+  document.querySelectorAll("[data-en][data-de]").forEach((element) => {
     element.textContent = element.dataset[language];
   });
 
@@ -41,7 +40,6 @@ if (referencesTrack) {
   const dots = [...document.querySelectorAll(".references__dot")];
   const status = document.querySelector(".references__status");
   const originalCards = [...referencesTrack.querySelectorAll(".references__card")];
-  const activeReferenceOrder = [1, 2, 0];
 
   function createClone(card) {
     const clone = card.cloneNode(true);
@@ -53,14 +51,14 @@ if (referencesTrack) {
     return clone;
   }
 
-  const leadingClones = originalCards.slice(-2).map(createClone);
-  const trailingClones = originalCards.slice(0, 2).map(createClone);
+  const leadingClones = originalCards.slice(-1).map(createClone);
+  const trailingClones = originalCards.slice(0, 1).map(createClone);
 
   referencesTrack.prepend(...leadingClones);
   referencesTrack.append(...trailingClones);
 
   const cards = [...referencesTrack.querySelectorAll(".references__card")];
-  let position = 3;
+  let position = 1;
   let slide = 0;
   let isTransitioning = false;
 
@@ -80,7 +78,7 @@ if (referencesTrack) {
     });
 
     originalCards.forEach((card) => {
-      const isActive = Number(card.dataset.reference) === activeReferenceOrder[slide];
+      const isActive = Number(card.dataset.reference) === slide;
       card.setAttribute("aria-hidden", String(!isActive));
     });
 
@@ -106,7 +104,7 @@ if (referencesTrack) {
 
     isTransitioning = true;
     position += direction;
-    slide = (slide + direction + 3) % 3;
+    slide = (slide + direction + originalCards.length) % originalCards.length;
     updateCarousel();
   }
 
@@ -137,8 +135,8 @@ if (referencesTrack) {
       return;
     }
 
-    if (position === 1 || position === 5) {
-      position = position === 1 ? 4 : 2;
+    if (position === 0 || position === cards.length - 1) {
+      position = position === 0 ? originalCards.length : 1;
       updateCarousel(false);
       referencesTrack.offsetWidth;
       requestAnimationFrame(() => {

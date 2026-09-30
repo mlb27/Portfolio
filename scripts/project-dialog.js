@@ -35,7 +35,7 @@ if (projectDialog) {
         { name: "TypeScript", icon: "typescript" },
       ],
       image: "./assets/images/projects/da-bubble-dialog.png",
-      github: "https://github.com/ChristopherBraun196/DA-Bubble",
+      github: "https://github.com/mlb27/DA-Bubble",
       live: "",
     },
     {

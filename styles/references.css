@@ -138,7 +138,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  width: 184px;
+  width: max-content;
   height: 40px;
   transform: translateX(-50%);
 }
