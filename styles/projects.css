@@ -85,7 +85,7 @@
   outline-offset: -6px;
 }
 
-.projects__item:hover,
+.projects__item:not(.projects__item--suppress-hover):hover,
 .projects__item:has(.projects__trigger:focus-visible) {
   background-color: rgb(var(--color-primary-rgb) / 30%);
 }
@@ -189,8 +189,8 @@
   object-fit: contain;
 }
 
-.projects__item:hover .projects__arrow,
-.projects__item:hover .projects__preview,
+.projects__item:not(.projects__item--suppress-hover):hover .projects__arrow,
+.projects__item:not(.projects__item--suppress-hover):hover .projects__preview,
 .projects__trigger:focus-visible .projects__arrow,
 .projects__trigger:focus-visible .projects__preview {
   opacity: 1;

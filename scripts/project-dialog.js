@@ -71,6 +71,7 @@ if (projectDialog) {
   const projectLanguageButtons = [...document.querySelectorAll("[data-language]")];
   let currentProject = 0;
   let lastTrigger = null;
+  let closedWithEscape = false;
 
   function getLanguage() {
     return document.documentElement.lang === "de" ? "de" : "en";
@@ -177,8 +178,30 @@ if (projectDialog) {
     projectDialog.classList.remove("project-dialog--switching");
   });
 
+  projectDialog.addEventListener("cancel", () => {
+    const projectItem = lastTrigger?.closest(".projects__item");
+
+    closedWithEscape = true;
+
+    if (projectItem) {
+      projectItem.classList.add("projects__item--suppress-hover");
+      document.addEventListener(
+        "pointermove",
+        () => projectItem.classList.remove("projects__item--suppress-hover"),
+        { once: true },
+      );
+    }
+  });
+
   projectDialog.addEventListener("close", () => {
     projectDialog.classList.remove("project-dialog--switching");
-    lastTrigger?.focus();
+
+    if (closedWithEscape) {
+      lastTrigger?.blur();
+    } else {
+      lastTrigger?.focus();
+    }
+
+    closedWithEscape = false;
   });
 }
