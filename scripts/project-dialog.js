@@ -19,7 +19,7 @@ if (projectDialog) {
       ],
       image: "./assets/images/projects/join-issue-collector-dialog.png",
       github: "https://github.com/mlb27/Join-Issue-Collector",
-      live: "https://moritz-boehm.developerakademie.net/join-issue-collector/",
+      live: "https://join.moritz-böhm.de/",
     },
     {
       key: "da-bubble",
