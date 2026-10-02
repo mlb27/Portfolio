@@ -1,3 +1,23 @@
+const skillsGrid = document.querySelector(".skills__grid");
+
+if (skillsGrid && "IntersectionObserver" in window) {
+  const skillItems = [...skillsGrid.querySelectorAll(".skills__item")];
+
+  skillItems.forEach((item, index) => {
+    item.style.setProperty("--skill-reveal-delay", `${index * 120}ms`);
+  });
+
+  const skillsObserver = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.isIntersecting)) {
+      skillsGrid.classList.add("skills__grid--visible");
+      skillsObserver.disconnect();
+    }
+  }, { threshold: 0.15 });
+
+  skillsGrid.classList.add("skills__grid--reveal-ready");
+  skillsObserver.observe(skillsGrid);
+}
+
 const growthMindsetItem = document.querySelector(".skills__item--growth");
 const growthMindsetTrigger = growthMindsetItem?.querySelector(".skills__growth-trigger");
 const growthMindsetTooltip = growthMindsetItem?.querySelector(".skills__growth-tooltip");

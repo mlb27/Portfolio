@@ -147,6 +147,21 @@
   letter-spacing: -0.03em;
 }
 
+.skills__grid--reveal-ready .skills__item {
+  opacity: 0;
+  transition: opacity 450ms ease-out;
+  transition-delay: var(--skill-reveal-delay, 0ms);
+}
+
+.skills__grid--visible .skills__item,
+.skills__grid--reveal-ready .skills__item:focus-within {
+  opacity: 1;
+}
+
+.skills__grid--reveal-ready .skills__item:focus-within {
+  transition-delay: 0ms;
+}
+
 .skills__icon {
   display: grid;
   width: 64px;
@@ -280,6 +295,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .skills__grid--reveal-ready .skills__item {
+    transition-duration: 450ms !important;
+  }
+
   .skills__icon img,
   .skills__growth-label {
     transition-duration: 150ms !important;
