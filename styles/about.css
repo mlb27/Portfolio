@@ -14,6 +14,7 @@
 }
 
 .about__photo {
+  --about-reveal-offset: -32px;
   width: 568px;
   height: 568px;
   border-radius: 30px;
@@ -29,10 +30,22 @@
 }
 
 .about__content {
+  --about-reveal-offset: 32px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-top: 98px;
+}
+
+.about__reveal-ready {
+  opacity: 0;
+  transform: translateX(var(--about-reveal-offset));
+  transition: opacity 650ms ease-out, transform 650ms ease-out;
+}
+
+.about__reveal-ready.about__reveal-visible {
+  opacity: 1;
+  transform: none;
 }
 
 .about__eyebrow {
@@ -129,6 +142,7 @@
   }
 
   .about__photo {
+    --about-reveal-offset: -12px;
     width: 358px;
     max-width: 100%;
     height: auto;
@@ -140,6 +154,7 @@
   }
 
   .about__content {
+    --about-reveal-offset: 12px;
     width: 358px;
     max-width: 100%;
     gap: 16px;
@@ -201,4 +216,10 @@
     line-height: 19px;
   }
 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__reveal-ready {
+    transition-duration: 650ms !important;
+  }
 }
