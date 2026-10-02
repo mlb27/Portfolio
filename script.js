@@ -15,6 +15,10 @@ function setLanguage(language) {
     element.setAttribute("aria-label", element.getAttribute(`data-aria-label-${language}`));
   });
 
+  document.querySelectorAll("[data-alt-en][data-alt-de]").forEach((element) => {
+    element.alt = element.getAttribute(`data-alt-${language}`);
+  });
+
   const contactForm = document.querySelector(".contact__form");
   if (contactForm) {
     contactForm.setAttribute("aria-label", language === "de" ? "Kontakt" : "Contact");
