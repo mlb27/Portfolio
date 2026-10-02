@@ -30,6 +30,10 @@
   overflow-wrap: anywhere;
 }
 
+.contact__heading span {
+  display: block;
+}
+
 :lang(de) .contact__heading {
   font-size: clamp(28px, 3vw, 42px);
 }
@@ -361,14 +365,13 @@
   }
 
   .contact__heading {
-    height: 112px;
+    height: auto;
     margin-bottom: 32px;
     font-size: 56px;
     line-height: 56px;
   }
 
   :lang(de) .contact__heading {
-    height: 88px;
     font-size: clamp(30px, calc(8.571vw + 2.571px), 36px);
     line-height: 44px;
   }

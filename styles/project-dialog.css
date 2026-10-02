@@ -337,8 +337,8 @@
   }
 
   .project-dialog {
-    width: min(22.875rem, 100vw);
-    max-width: 100vw;
+    width: min(22.875rem, 100%);
+    max-width: 100%;
     height: min(52.75rem, 100dvh);
     max-height: 100dvh;
     padding: 5.875rem 0.6875rem 1.8125rem;

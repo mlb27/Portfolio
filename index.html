@@ -458,7 +458,7 @@
                 <div class="contact__content">
                     <p class="contact__subtext" data-en="Contact me" data-de="Kontakt">Contact me</p>
                     <h2 class="contact__heading" id="contact-title">
-                        <span data-en="Let's work" data-de="Lass uns">Let's work</span><br>
+                        <span data-en="Let's work" data-de="Lass uns">Let's work</span>
                         <span data-en="together" data-de="zusammenarbeiten">together</span>
                     </h2>
                     <h3 class="contact__ask" data-en="Got a problem to solve?"
@@ -511,13 +511,17 @@
                     <div class="contact__consent-group">
                         <div class="contact__consent">
                             <input id="contact-consent" name="consent" type="checkbox" required
+                                aria-labelledby="contact-consent-prefix contact-consent-policy contact-consent-suffix"
                                 aria-describedby="contact-consent-error">
                             <div>
-                                <label for="contact-consent" data-en="I've read the" data-de="Ich habe die">I've read the</label>
-                                <a class="contact__privacy-link" href="./privacy-policy.html" target="_blank"
+                                <label id="contact-consent-prefix" for="contact-consent" data-en="I've read the"
+                                    data-de="Ich habe die">I've read the</label>
+                                <a class="contact__privacy-link" id="contact-consent-policy"
+                                    href="./privacy-policy.html" target="_blank"
                                     rel="noopener noreferrer"
                                     data-en="privacy policy" data-de="Datenschutzerklärung">privacy policy</a>
-                                <label for="contact-consent" data-en="and understand how my data is processed."
+                                <label id="contact-consent-suffix" for="contact-consent"
+                                    data-en="and understand how my data is processed."
                                     data-de="gelesen und verstanden, wie meine Daten verarbeitet werden.">and understand how my data is processed.</label>
                             </div>
                         </div>
