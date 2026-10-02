@@ -54,7 +54,7 @@ if (projectDialog) {
       ],
       image: "./assets/images/projects/code-a-cuisine-dialog.jpg",
       github: "https://github.com/mlb27/code-a-cuisine",
-      live: "",
+      live: "https://code-a-cuisine.moritz-böhm.de/",
     },
   ];
 
