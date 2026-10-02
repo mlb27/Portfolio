@@ -149,17 +149,14 @@
 
 .skills__grid--reveal-ready .skills__item {
   opacity: 0;
+  pointer-events: none;
   transition: opacity 450ms ease-out;
-  transition-delay: var(--skill-reveal-delay, 0ms);
 }
 
-.skills__grid--visible .skills__item,
+.skills__grid--reveal-ready .skills__item--visible,
 .skills__grid--reveal-ready .skills__item:focus-within {
   opacity: 1;
-}
-
-.skills__grid--reveal-ready .skills__item:focus-within {
-  transition-delay: 0ms;
+  pointer-events: auto;
 }
 
 .skills__icon {

@@ -28,10 +28,10 @@
 }
 
 .references__track {
-  --track-offset: -2088px;
+  --track-offset: 0px;
   position: absolute;
   top: 0;
-  left: calc(50% - 326px);
+  left: calc(50% - 316px);
   display: flex;
   align-items: center;
   gap: 64px;
@@ -64,7 +64,18 @@
   background-color: rgb(var(--color-primary-rgb) / 10%);
   transition:
     height 300ms ease-in,
-    background-color 300ms ease-in;
+    background-color 300ms ease-in,
+    opacity 350ms ease-out;
+}
+
+.references__track--reveal-ready .references__card {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.references__track--reveal-ready .references__card--visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .references__card:not(.is-active) {
@@ -166,6 +177,11 @@
     background-color 100ms ease-in;
 }
 
+.references__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .references__arrow--previous::before {
   top: 10.94px;
   left: 11.1px;
@@ -186,7 +202,7 @@
   mask: url("../assets/icons/reference-arrow-forward.svg") center / 100% 100% no-repeat;
 }
 
-.references__arrow--previous:hover::before,
+.references__arrow--previous:not(:disabled):hover::before,
 .references__arrow--previous:focus-visible::before {
   top: 10.42px;
   left: 6.5px;
@@ -195,7 +211,7 @@
   background-color: var(--color-primary);
 }
 
-.references__arrow--next:hover::before,
+.references__arrow--next:not(:disabled):hover::before,
 .references__arrow--next:focus-visible::before {
   top: 10.4px;
   left: 14px;
@@ -231,9 +247,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .references__track,
-  .references__card {
+  .references__track {
     transition-duration: 300ms !important;
+  }
+
+  .references__card {
+    transition-duration: 300ms, 300ms, 350ms !important;
   }
 
   .references__arrow::before {

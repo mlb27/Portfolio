@@ -1,5 +1,25 @@
 const languageButtons = document.querySelectorAll("[data-language]");
 
+function getSavedLanguage() {
+  try {
+    return localStorage.getItem("portfolio-language") === "de" ? "de" : "en";
+  } catch {
+    return document.documentElement.lang === "de" ? "de" : "en";
+  }
+}
+
+function animateHeroProfession() {
+  const profession = document.querySelector(".hero__profession");
+  if (!profession) {
+    return;
+  }
+
+  profession.style.setProperty("--profession-characters", profession.textContent.trim().length);
+  profession.classList.remove("hero__profession--typing");
+  profession.offsetWidth;
+  profession.classList.add("hero__profession--typing");
+}
+
 function setLanguage(language) {
   document.documentElement.lang = language;
 
@@ -30,10 +50,27 @@ function setLanguage(language) {
     button.classList.toggle("active", isActive);
     button.setAttribute("aria-pressed", isActive);
   });
+
+  animateHeroProfession();
+
+  try {
+    localStorage.setItem("portfolio-language", language);
+  } catch {
+    return;
+  }
 }
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.language));
+});
+
+setLanguage(getSavedLanguage());
+
+window.addEventListener("pageshow", () => {
+  const language = getSavedLanguage();
+  if (language !== document.documentElement.lang) {
+    document.querySelector(`[data-language="${language}"]`)?.click();
+  }
 });
 
 const referencesTrack = document.querySelector(".references__track");
@@ -43,28 +80,8 @@ if (referencesTrack) {
   const nextButton = document.querySelector(".references__arrow--next");
   const dots = [...document.querySelectorAll(".references__dot")];
   const status = document.querySelector(".references__status");
-  const originalCards = [...referencesTrack.querySelectorAll(".references__card")];
-
-  function createClone(card) {
-    const clone = card.cloneNode(true);
-
-    clone.classList.add("references__card--clone");
-    clone.classList.remove("is-active");
-    clone.setAttribute("aria-hidden", "true");
-
-    return clone;
-  }
-
-  const leadingClones = originalCards.slice(-1).map(createClone);
-  const trailingClones = originalCards.slice(0, 1).map(createClone);
-
-  referencesTrack.prepend(...leadingClones);
-  referencesTrack.append(...trailingClones);
-
   const cards = [...referencesTrack.querySelectorAll(".references__card")];
-  let position = 1;
   let slide = 0;
-  let isTransitioning = false;
 
   function getReferenceStep() {
     const cardWidth = cards[0].getBoundingClientRect().width;
@@ -75,14 +92,11 @@ if (referencesTrack) {
 
   function updateCarousel(animate = true) {
     referencesTrack.classList.toggle("references__track--no-transition", !animate);
-    referencesTrack.style.setProperty("--track-offset", `${position * -getReferenceStep()}px`);
+    referencesTrack.style.setProperty("--track-offset", `${slide * -getReferenceStep()}px`);
 
     cards.forEach((card, index) => {
-      card.classList.toggle("is-active", index === position);
-    });
-
-    originalCards.forEach((card) => {
-      const isActive = Number(card.dataset.reference) === slide;
+      const isActive = index === slide;
+      card.classList.toggle("is-active", isActive);
       card.setAttribute("aria-hidden", String(!isActive));
     });
 
@@ -90,6 +104,8 @@ if (referencesTrack) {
       dot.classList.toggle("is-active", index === slide);
     });
 
+    previousButton.disabled = slide === 0;
+    nextButton.disabled = slide === cards.length - 1;
     updateReferenceStatus();
   }
 
@@ -98,17 +114,16 @@ if (referencesTrack) {
     const label = isGerman ? "Referenz" : "Reference";
     const separator = isGerman ? "von" : "of";
 
-    status.textContent = `${label} ${slide + 1} ${separator} ${originalCards.length}`;
+    status.textContent = `${label} ${slide + 1} ${separator} ${cards.length}`;
   }
 
   function moveCarousel(direction) {
-    if (isTransitioning) {
+    const nextSlide = slide + direction;
+    if (nextSlide < 0 || nextSlide >= cards.length) {
       return;
     }
 
-    isTransitioning = true;
-    position += direction;
-    slide = (slide + direction + originalCards.length) % originalCards.length;
+    slide = nextSlide;
     updateCarousel();
   }
 
@@ -125,35 +140,15 @@ if (referencesTrack) {
       return;
     }
 
-    const cardPosition = cards.indexOf(card);
-
-    if (cardPosition === position - 1) {
-      moveCarousel(-1);
-    } else if (cardPosition === position + 1) {
-      moveCarousel(1);
+    const cardIndex = cards.indexOf(card);
+    if (cardIndex >= 0 && cardIndex !== slide) {
+      moveCarousel(cardIndex - slide);
     }
-  });
-
-  referencesTrack.addEventListener("transitionend", (event) => {
-    if (event.target !== referencesTrack || event.propertyName !== "transform") {
-      return;
-    }
-
-    if (position === 0 || position === cards.length - 1) {
-      position = position === 0 ? originalCards.length : 1;
-      updateCarousel(false);
-      referencesTrack.offsetWidth;
-      requestAnimationFrame(() => {
-        referencesTrack.classList.remove("references__track--no-transition");
-      });
-    }
-
-    isTransitioning = false;
   });
 
   function resetCarouselPosition() {
-    isTransitioning = false;
     updateCarousel(false);
+    referencesTrack.offsetWidth;
     requestAnimationFrame(() => {
       referencesTrack.classList.remove("references__track--no-transition");
     });
@@ -161,6 +156,46 @@ if (referencesTrack) {
 
   window.addEventListener("resize", resetCarouselPosition);
   resetCarouselPosition();
+
+  if ("IntersectionObserver" in window) {
+    const visibleCards = new Set();
+    let revealTimer = null;
+
+    function revealNextReference() {
+      if (revealTimer !== null) {
+        return;
+      }
+
+      const card = cards.find((item) => visibleCards.has(item));
+      if (!card) {
+        return;
+      }
+
+      visibleCards.delete(card);
+      card.classList.add("references__card--visible");
+      referencesObserver.unobserve(card);
+
+      revealTimer = setTimeout(() => {
+        revealTimer = null;
+        revealNextReference();
+      }, 350);
+    }
+
+    const referencesObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
+          visibleCards.add(entry.target);
+        } else {
+          visibleCards.delete(entry.target);
+        }
+      });
+
+      revealNextReference();
+    }, { threshold: 0.15 });
+
+    referencesTrack.classList.add("references__track--reveal-ready");
+    cards.forEach((card) => referencesObserver.observe(card));
+  }
 }
 
 const contactForm = document.querySelector(".contact__form");

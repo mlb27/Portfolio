@@ -28,6 +28,21 @@
   font-family: var(--font-heading);
   font-size: 40px;
   line-height: 1;
+  white-space: nowrap;
+}
+
+.hero__profession--typing {
+  animation: hero-profession-type 1.5s steps(var(--profession-characters, 18), end) 150ms both;
+}
+
+@keyframes hero-profession-type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 .hero h1 {
@@ -296,6 +311,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero__profession--typing {
+    animation-duration: 1.5s !important;
+  }
+
   .hero__socials img {
     transition-duration: 100ms !important;
   }

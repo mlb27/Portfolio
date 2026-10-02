@@ -2,20 +2,43 @@ const skillsGrid = document.querySelector(".skills__grid");
 
 if (skillsGrid && "IntersectionObserver" in window) {
   const skillItems = [...skillsGrid.querySelectorAll(".skills__item")];
+  const visibleSkills = new Set();
+  let revealTimer = null;
 
-  skillItems.forEach((item, index) => {
-    item.style.setProperty("--skill-reveal-delay", `${index * 120}ms`);
-  });
+  function revealNextSkill() {
+    if (revealTimer !== null) {
+      return;
+    }
+
+    const item = skillItems.find((skill) => visibleSkills.has(skill));
+    if (!item) {
+      return;
+    }
+
+    visibleSkills.delete(item);
+    item.classList.add("skills__item--visible");
+    skillsObserver.unobserve(item);
+
+    revealTimer = setTimeout(() => {
+      revealTimer = null;
+      revealNextSkill();
+    }, 120);
+  }
 
   const skillsObserver = new IntersectionObserver((entries) => {
-    if (entries.some((entry) => entry.isIntersecting)) {
-      skillsGrid.classList.add("skills__grid--visible");
-      skillsObserver.disconnect();
-    }
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
+        visibleSkills.add(entry.target);
+      } else {
+        visibleSkills.delete(entry.target);
+      }
+    });
+
+    revealNextSkill();
   }, { threshold: 0.15 });
 
   skillsGrid.classList.add("skills__grid--reveal-ready");
-  skillsObserver.observe(skillsGrid);
+  skillItems.forEach((item) => skillsObserver.observe(item));
 }
 
 const growthMindsetItem = document.querySelector(".skills__item--growth");
